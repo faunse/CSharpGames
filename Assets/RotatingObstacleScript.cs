@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MovingObstacleScript : MonoBehaviour
+public class RotatingObstacleScript : MonoBehaviour
 {
     [SerializeField] private Transform m_startwaypoint;
     [SerializeField] private Transform m_endwaypoint;

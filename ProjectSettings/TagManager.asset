@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - MovvingObstacleWayPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX

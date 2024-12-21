@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MovingObstacleScript : MonoBehaviour
 {
-    [SerializeField] private Transform m_startwaypoint;
-    [SerializeField] private Transform m_endwaypoint;
+    [SerializeField] private Transform m_startwaypoint1;
+    [SerializeField] private Transform m_endwaypoint2;
     [SerializeField] private float m_speed = 5;
 
     private Transform m_target;
@@ -12,27 +12,26 @@ public class MovingObstacleScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        m_target = m_startwaypoint;
+        m_target = m_startwaypoint1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float rotationangle = m_speed * Time.deltaTime;
 
-        transform.RotateAround(m_target.position, Vector3.forward, rotationangle);
+        transform.position = Vector2.MoveTowards(transform.position, m_target.position, m_speed * Time.deltaTime);
        
     }
 
     void ChangeTarget()
     {
-        if (m_target != m_startwaypoint)
+        if (m_target != m_startwaypoint1)
         {
-            m_target = m_startwaypoint;
+            m_target = m_startwaypoint1;
         }
         else
         {
-            m_target = m_endwaypoint;
+            m_target = m_endwaypoint2;
         }
     }
 
