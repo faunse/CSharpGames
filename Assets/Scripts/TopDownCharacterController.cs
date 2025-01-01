@@ -1,5 +1,9 @@
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// A class to control the top down character.
@@ -30,6 +34,18 @@ public class TopDownCharacterController : MonoBehaviour
 
     #endregion
 
+    [Header("Projectile Parameters")]
+    [SerializeField] GameObject m_bullet;
+    [SerializeField] Transform m_firepoint;
+    [SerializeField] float m_projectilespeed;
+    [SerializeField] int m_Bdamage;
+    [SerializeField] float m_FireRate;
+    private float m_FireTimeout = 0;
+    [SerializeField] private Vector2 m_lastdirection;
+   
+
+
+
     /// <summary>
     /// When the script first initialises this gets called.
     /// Use this for grabbing components and setting up input bindings.
@@ -43,6 +59,9 @@ public class TopDownCharacterController : MonoBehaviour
         //get components from Character game object so that we can use them later.
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody2D>();
+       
+
+
     }
 
     /// <summary>
@@ -51,6 +70,7 @@ public class TopDownCharacterController : MonoBehaviour
     void Start()
     {
         
+
     }
 
     /// <summary>
@@ -85,14 +105,37 @@ public class TopDownCharacterController : MonoBehaviour
         {
             m_animator.SetFloat("Horizontal", m_playerDirection.x);
             m_animator.SetFloat("Vertical", m_playerDirection.y);
+            m_lastdirection = m_playerDirection;
         }
 
+        
         // check if an attack has been triggered.
         if (m_attackAction.IsPressed())
         {
-            // just log that an attack has been registered for now
-            // we will look at how to do this in future sessions.
-            Debug.Log("Attack!");
+            Fire();
+            Debug.Log("Shot");
+        }
+
+    }
+
+    void Fire()
+    {
+        Vector2 firedirection = m_lastdirection;
+        Vector3 PlayerPos = transform.position;
+        Vector3 mousepos = Input.mousePosition;
+        Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
+        Vector3 CrossHair = mouseposonscreen - PlayerPos;
+
+        if (firedirection == Vector2.zero)
+        {
+            firedirection = Vector2.down;
+        }
+
+        GameObject bullet = Instantiate(m_bullet, m_firepoint.position, quaternion.identity);
+
+        if (bullet.GetComponent<Rigidbody2D>() != null)
+        {
+            bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair * m_projectilespeed, ForceMode2D.Impulse);
         }
     }
 }
