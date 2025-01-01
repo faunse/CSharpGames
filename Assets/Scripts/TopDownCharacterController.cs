@@ -112,8 +112,7 @@ public class TopDownCharacterController : MonoBehaviour
         // check if an attack has been triggered.
         if (m_attackAction.IsPressed())
         {
-            Fire();
-            Debug.Log("Shot");
+            
         }
 
     }
@@ -124,7 +123,7 @@ public class TopDownCharacterController : MonoBehaviour
         Vector3 PlayerPos = transform.position;
         Vector3 mousepos = Input.mousePosition;
         Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
-        Vector3 CrossHair = mouseposonscreen - PlayerPos;
+        Vector2 CrossHair = mouseposonscreen - PlayerPos;
 
         if (firedirection == Vector2.zero)
         {
@@ -135,7 +134,7 @@ public class TopDownCharacterController : MonoBehaviour
 
         if (bullet.GetComponent<Rigidbody2D>() != null)
         {
-            bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair * m_projectilespeed, ForceMode2D.Impulse);
+            bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
         }
     }
 }
