@@ -1,3 +1,4 @@
+using System.Buffers;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,12 +32,19 @@ public class WeaponScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_attackAction.IsPressed())
+        if (m_attackAction.IsPressed() && Time.time > m_FireTimeout)
         {
+            m_FireTimeout = Time.time + m_FireRate;
             Fire();
-            Debug.Log("Shot");
+            
         }
 
+    }
+
+    public void ChangeWeaponAR()
+    {
+        m_Bdamage = 100;
+        m_FireRate = 0.2f;
     }
 
 
