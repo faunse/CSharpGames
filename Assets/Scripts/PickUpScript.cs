@@ -21,7 +21,7 @@ public class PickUpScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponentInChildren<WeaponScript>().ChangeWeaponAR();
+            collision.GetComponentInChildren<ParentWeapon>().ChangeWeaponAR();
            
         }
 
