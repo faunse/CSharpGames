@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PistolWeapon : ParentWeapon
+public class Shotgun : ParentWeapon
 {
     private void Awake()
     {
-        m_damage = 5;
-        m_FireRate = 0.4f;
-        m_projectilespeed = 20;
+        m_FireRate = 0.5f;
+        m_damage = 30;
+        m_projectilespeed = 10;
     }
     protected override void Fire()
     {

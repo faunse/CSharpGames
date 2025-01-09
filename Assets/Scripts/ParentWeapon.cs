@@ -51,7 +51,7 @@ public class ParentWeapon : MonoBehaviour
 
     protected virtual void Fire()
     {
-        Debug.Log("Shootings the default gun.");
+        
         
     }
 }
