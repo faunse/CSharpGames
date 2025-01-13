@@ -44,6 +44,18 @@ public class ARScript : ParentWeapon
         gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
     }
+
+    private void OnEnable()
+    {
+        m_damage = 15;
+        m_FireRate = 0.1f;
+        m_projectilespeed = 15;
+        m_Sprite = Resources.Load<Sprite>("AR");
+        AddStats("All", 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
+
+    }
     protected override void Fire()
     {
         Vector3 PlayerPos = transform.position;

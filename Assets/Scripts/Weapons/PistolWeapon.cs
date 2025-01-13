@@ -25,7 +25,17 @@ public class PistolWeapon : ParentWeapon
         Debug.Log("Started");
     }
 
-   
+    private void OnEnable()
+    {
+        m_damage = 5;
+        m_FireRate = 0.4f;
+        m_projectilespeed = 20;
+        m_Sprite = Resources.Load<Sprite>("Revolver");
+        AddStats("All", 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+    }
+
 
 
     public override void AddStats(string stat, float amount)

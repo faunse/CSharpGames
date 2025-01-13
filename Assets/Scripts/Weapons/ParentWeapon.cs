@@ -13,7 +13,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected float m_projectilespeed;
     [SerializeField] protected float m_damage;
     [SerializeField] protected float m_FireRate;
-    [SerializeField] protected Sprite Sprite;
+    [SerializeField] protected Sprite m_Sprite;
     protected float m_FireTimeout = 0;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
@@ -29,6 +29,8 @@ public abstract class ParentWeapon : MonoBehaviour
         
 
     }
+
+    
 
     // Update is called once per frame
     void Update()

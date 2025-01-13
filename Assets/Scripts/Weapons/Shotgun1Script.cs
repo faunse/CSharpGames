@@ -46,6 +46,18 @@ public class Shotgun1Script : ParentWeapon
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
 
     }
+
+    private void OnEnable()
+    {
+        m_FireRate = 0.5f;
+        m_damage = 30;
+        m_projectilespeed = 10;
+        m_Sprite = Resources.Load<Sprite>("Shotgun");
+        AddStats("All", 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
+    }
+
     protected override void Fire()
     {
         Vector3 PlayerPos = transform.position;

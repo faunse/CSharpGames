@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatsForWeapons : MonoBehaviour
@@ -18,7 +19,7 @@ public class StatsForWeapons : MonoBehaviour
         
     }
 
-    void AddFirerate()
+    public void AddFirerate()
     {
         if (Pscore >= Cost)
         {
@@ -28,7 +29,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    void AddDamage()
+    public void AddDamage()
     {
         if (Pscore >= Cost)
         {
@@ -38,7 +39,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    void AddRange()
+    public void AddRange()
     {
         if (Pscore >= Cost)
         {
@@ -48,7 +49,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    void AddHealh()
+    public void AddHealh()
     {
         if (Pscore >= Cost)
         {
@@ -61,7 +62,7 @@ public class StatsForWeapons : MonoBehaviour
     }
 
 
-    void AddSpeed()
+    public void AddSpeed()
     {
         if (Pscore >= Cost)
         {
@@ -71,9 +72,44 @@ public class StatsForWeapons : MonoBehaviour
 
     }
 
-    void Score()
+    public void Score()
     {
         gameObject.GetComponent<Score>().Bought(Cost);
+    }
+
+    public void BuyAR()
+    {
+        if (Pscore >= Cost)
+        {
+            GetComponent<PistolWeapon>().enabled = false;
+            GetComponent<Shotgun1Script>().enabled = false;
+            GetComponent<ARScript>().enabled = true;
+        }
+    }
+
+    public void BuyShotgun()
+    {
+        if (Pscore >= Cost)
+        {
+            GetComponent<PistolWeapon>().enabled = false;
+            GetComponent<Shotgun1Script>().enabled = true;
+            GetComponent<ARScript>().enabled = false;
+        }
+    }
+
+    public void BuyPistol()
+    {
+        if (Pscore >= Cost)
+        {
+            GetComponent<PistolWeapon>().enabled = true;
+            GetComponent<Shotgun1Script>().enabled = false;
+            GetComponent<ARScript>().enabled = false;
+        }
+    }
+
+    void UpgradeAR()
+    {
+
     }
 
 
