@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    private int m_score;
+    public int m_score;
 
     public void AddScore(int scoretoadd = 5)
     {
@@ -13,6 +13,11 @@ public class Score : MonoBehaviour
     { 
         return m_score; 
     
+    }
+
+    public void Bought(int Cost)
+    {
+        m_score = m_score - Cost;
     }
     
 }

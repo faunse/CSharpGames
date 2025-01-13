@@ -3,7 +3,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ParentWeapon : MonoBehaviour
+public abstract class ParentWeapon : MonoBehaviour
 {
 
 
@@ -11,8 +11,9 @@ public class ParentWeapon : MonoBehaviour
     [SerializeField] protected GameObject m_bullet;
     [SerializeField] protected Transform m_firepoint;
     [SerializeField] protected float m_projectilespeed;
-    [SerializeField] protected int m_damage;
+    [SerializeField] protected float m_damage;
     [SerializeField] protected float m_FireRate;
+    [SerializeField] protected Sprite Sprite;
     protected float m_FireTimeout = 0;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
@@ -32,10 +33,15 @@ public class ParentWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
+
         if (m_attackAction.IsPressed() && Time.time > m_FireTimeout)
         {
             m_FireTimeout = Time.time + m_FireRate;
             Fire();
+            
             
         }
 
@@ -48,11 +54,11 @@ public class ParentWeapon : MonoBehaviour
     }
 
 
+    public abstract void AddStats(string stat, float amount);
 
-    protected virtual void Fire()
-    {
-        
-        
-    }
+
+
+    protected abstract void Fire();
+    
 }
 

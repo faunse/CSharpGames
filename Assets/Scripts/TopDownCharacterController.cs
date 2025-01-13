@@ -28,7 +28,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     [Header("Movement parameters")]
     //The speed at which the player moves
-    [SerializeField] private float m_playerSpeed = 200f;
+    [SerializeField] public float m_playerSpeed = 200f;
     //The maximum speed the player can move
     [SerializeField] private float m_playerMaxSpeed = 1000f;
 
@@ -42,6 +42,8 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] float m_FireRate;
     private float m_FireTimeout = 0;
     [SerializeField] private Vector2 m_lastdirection;
+    
+    
 
 
 
