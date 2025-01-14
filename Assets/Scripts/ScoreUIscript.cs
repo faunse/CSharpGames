@@ -13,7 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         m_ScoreText = (TextMeshProUGUI)GetComponent<TMPro.TMP_Text>();
 
-        m_scoreSystem = GameObject.Find("ScoreSystem").GetComponent<Score>();
+        m_scoreSystem = GameObject.Find("Character").GetComponent<Score>();
 
     }
 

@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 279370488}
   - component: {fileID: 279370487}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: GunObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +640,6 @@ MonoBehaviour:
   range: 0
   Health: 100
   Speed: 0
-  Cost: 0
 --- !u!114 &279370487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,14 +1647,13 @@ GameObject:
   - component: {fileID: 544962898}
   - component: {fileID: 544962897}
   - component: {fileID: 544962896}
-  - component: {fileID: 544962900}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &544962896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1739,19 +1737,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &544962900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544962895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7dbd674ff4400478a6098c1c0376c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_score: 0
 --- !u!1 &555414604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4654,7 +4639,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 671598236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117077035}
+        m_TargetAssemblyTypeName: StorePrices, Assembly-CSharp
+        m_MethodName: DamageBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 279370486}
+        m_TargetAssemblyTypeName: StatsForWeapons, Assembly-CSharp
+        m_MethodName: AddDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &671598236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8076,7 +8085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 889007623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117077035}
+        m_TargetAssemblyTypeName: StorePrices, Assembly-CSharp
+        m_MethodName: SpeedBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &889007623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8261,6 +8282,7 @@ GameObject:
   - component: {fileID: 948872912}
   - component: {fileID: 948872914}
   - component: {fileID: 948872913}
+  - component: {fileID: 948872915}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -8386,6 +8408,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948872911}
   m_CullTransparentMesh: 1
+--- !u!114 &948872915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948872911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069219eb4ce4dd4f8e2e54cc0dca98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: Speed
 --- !u!1 &953269467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2550601151919518682, guid: 6616c9ce4a5645e44a3d677fe726357b, type: 3}
@@ -8486,7 +8521,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 962122935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117077035}
+        m_TargetAssemblyTypeName: StorePrices, Assembly-CSharp
+        m_MethodName: HealthBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 279370486}
+        m_TargetAssemblyTypeName: StatsForWeapons, Assembly-CSharp
+        m_MethodName: AddHealh
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &962122935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9079,6 +9138,7 @@ GameObject:
   - component: {fileID: 1117077033}
   - component: {fileID: 1117077032}
   - component: {fileID: 1117077031}
+  - component: {fileID: 1117077035}
   m_Layer: 5
   m_Name: StoreParentCanvas
   m_TagString: Untagged
@@ -9169,6 +9229,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1117077035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117077030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5da3e2bf368e54aa88c15ce0bfbee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthCost: 100
+  SpeedCost: 100
+  DamageCost: 80
+  RangeCost: 60
+  FireRateCost: 80
 --- !u!1 &1121030449
 GameObject:
   m_ObjectHideFlags: 0
@@ -9729,7 +9806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1163282481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10472,7 +10549,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1315286728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117077035}
+        m_TargetAssemblyTypeName: StorePrices, Assembly-CSharp
+        m_MethodName: RangeBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 279370486}
+        m_TargetAssemblyTypeName: StatsForWeapons, Assembly-CSharp
+        m_MethodName: AddRange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1315286728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10643,6 +10744,7 @@ GameObject:
   - component: {fileID: 1354566256}
   - component: {fileID: 1354566258}
   - component: {fileID: 1354566257}
+  - component: {fileID: 1354566259}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -10768,6 +10870,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354566255}
   m_CullTransparentMesh: 1
+--- !u!114 &1354566259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354566255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069219eb4ce4dd4f8e2e54cc0dca98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: Range
 --- !u!1 &1359647525
 GameObject:
   m_ObjectHideFlags: 0
@@ -25933,7 +26048,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1555323103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117077035}
+        m_TargetAssemblyTypeName: StorePrices, Assembly-CSharp
+        m_MethodName: FireRateBuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 279370486}
+        m_TargetAssemblyTypeName: StatsForWeapons, Assembly-CSharp
+        m_MethodName: AddFirerate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1555323103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26118,6 +26257,7 @@ GameObject:
   - component: {fileID: 1600489357}
   - component: {fileID: 1600489359}
   - component: {fileID: 1600489358}
+  - component: {fileID: 1600489360}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -26243,6 +26383,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600489356}
   m_CullTransparentMesh: 1
+--- !u!114 &1600489360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600489356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069219eb4ce4dd4f8e2e54cc0dca98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: Health
 --- !u!1 &1608430504
 GameObject:
   m_ObjectHideFlags: 0
@@ -26755,7 +26908,6 @@ MonoBehaviour:
   range: 0
   Health: 100
   Speed: 0
-  Cost: 0
 --- !u!114 &1618778973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26768,7 +26920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7dbd674ff4400478a6098c1c0376c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_score: 0
+  m_score: 1111111111
 --- !u!1 &1644003499
 GameObject:
   m_ObjectHideFlags: 0
@@ -27161,6 +27313,7 @@ GameObject:
   - component: {fileID: 1752454787}
   - component: {fileID: 1752454789}
   - component: {fileID: 1752454788}
+  - component: {fileID: 1752454790}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -27286,6 +27439,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752454786}
   m_CullTransparentMesh: 1
+--- !u!114 &1752454790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752454786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069219eb4ce4dd4f8e2e54cc0dca98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: Damage
 --- !u!1 &1803052487
 GameObject:
   m_ObjectHideFlags: 0
@@ -27732,6 +27898,7 @@ GameObject:
   - component: {fileID: 1931846412}
   - component: {fileID: 1931846414}
   - component: {fileID: 1931846413}
+  - component: {fileID: 1931846415}
   m_Layer: 5
   m_Name: Price
   m_TagString: Untagged
@@ -27857,6 +28024,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931846411}
   m_CullTransparentMesh: 1
+--- !u!114 &1931846415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931846411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1069219eb4ce4dd4f8e2e54cc0dca98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: Rate of fire
 --- !u!1 &1945251152
 GameObject:
   m_ObjectHideFlags: 0

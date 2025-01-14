@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,73 +12,91 @@ public class StatsForWeapons : MonoBehaviour
     public float Health = 100;
     public float Speed;
     private int Pscore;
-    public int Cost;
+    private int Cost2;
+    private StorePrices Store;
+    
 
     private void Update()
     {
+        
         Pscore = gameObject.GetComponentInParent<Score>().m_score;
         
     }
 
-    public void AddFirerate()
+    private void Start()
     {
+        Store = GameObject.Find("StoreParentCanvas").GetComponent<StorePrices>();
+        
+    }
+
+    public void AddFirerate(int Cost)
+    {
+        Cost = (int)Store.FireRateCost;
         if (Pscore >= Cost)
         {
+            
             FireRate = FireRate + 0.05f;
             GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
-            Score();
+            Score(Cost);
         }
     }
 
-    public void AddDamage()
+    public void AddDamage(int Cost)
     {
+        Cost = (int)Store.DamageCost;
         if (Pscore >= Cost)
         {
             Damage = Damage + 1;
             GetComponent<ParentWeapon>().AddStats("Damage", Damage);
-            Score();
+            Score(Cost);
         }
     }
 
-    public void AddRange()
+    public void AddRange(int Cost)
     {
+        Cost = (int)Store.RangeCost;
         if (Pscore >= Cost)
         {
             range = range + 0.5f;
             GetComponent<ParentWeapon>().AddStats("Range", range);
-            Score();
+            Score(Cost);
         }
     }
 
-    public void AddHealh()
+    public void AddHealh(int Cost)
     {
+        Cost = (int)Store.HealthCost;
+        Debug.Log(Cost);
         if (Pscore >= Cost)
         {
             Health = Health + 10;
-            gameObject.GetComponent<HealthScript>().m_MaxHealth = Health;
-            gameObject.GetComponent<HealthScript>().m_CurrentHealth += 10;
-            Score();
+            gameObject.GetComponentInParent<HealthScript>().m_MaxHealth = Health;
+            gameObject.GetComponentInParent<HealthScript>().m_CurrentHealth += 10;
+            Debug.Log("Health Updated");
+            
+            Score(Cost);
         }
 
     }
 
 
-    public void AddSpeed()
+    public void AddSpeed(int Cost)
     {
+        Cost = (int)Store.SpeedCost;
         if (Pscore >= Cost)
         {
             gameObject.GetComponent<TopDownCharacterController>().m_playerSpeed += 25;
-            Score();
+            Score(Cost);
         }
 
     }
 
-    public void Score()
+    public void Score(int cost)
     {
-        gameObject.GetComponent<Score>().Bought(Cost);
+        gameObject.GetComponentInParent<Score>().Bought(cost);
     }
 
-    public void BuyAR()
+    public void BuyAR(int Cost)
     {
         if (Pscore >= Cost)
         {
@@ -87,7 +106,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    public void BuyShotgun()
+    public void BuyShotgun(int Cost)
     {
         if (Pscore >= Cost)
         {
@@ -97,7 +116,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    public void BuyPistol()
+    public void BuyPistol(int Cost)
     {
         if (Pscore >= Cost)
         {
@@ -107,7 +126,7 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    void UpgradeAR()
+    void UpgradeAR(int Cost)
     {
 
     }
