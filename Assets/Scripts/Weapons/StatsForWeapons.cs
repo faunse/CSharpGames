@@ -14,6 +14,7 @@ public class StatsForWeapons : MonoBehaviour
     private int Pscore;
     private int Cost2;
     private StorePrices Store;
+
     
 
     private void Update()
@@ -29,6 +30,8 @@ public class StatsForWeapons : MonoBehaviour
         
     }
 
+    
+
     public void AddFirerate(int Cost)
     {
         Cost = (int)Store.FireRateCost;
@@ -36,7 +39,7 @@ public class StatsForWeapons : MonoBehaviour
         {
             
             FireRate = FireRate + 0.05f;
-            GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
+            gameObject.GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
             Score(Cost);
         }
     }
@@ -85,7 +88,7 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.SpeedCost;
         if (Pscore >= Cost)
         {
-            gameObject.GetComponent<TopDownCharacterController>().m_playerSpeed += 25;
+            gameObject.GetComponentInParent<TopDownCharacterController>().m_playerSpeed += 25;
             Score(Cost);
         }
 

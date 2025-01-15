@@ -8,6 +8,7 @@ using UnityEngine;
 public class Shotgun1Script : ParentWeapon
 {
     private float TakeAway;
+    public Sprite m_Sprite2;
 
     public override void AddStats(string stat, float amount)
     {
@@ -35,26 +36,16 @@ public class Shotgun1Script : ParentWeapon
     }
 
 
-    private void Awake()
-    {
-        m_FireRate = 0.5f;
-        m_damage = 30;
-        m_projectilespeed = 10;
-        m_Sprite = Resources.Load<Sprite>("Shotgun");
-        AddStats("All", 0);
-        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
-
-    }
+ 
+    
 
     private void OnEnable()
     {
         m_FireRate = 0.5f;
         m_damage = 30;
         m_projectilespeed = 10;
-        m_Sprite = Resources.Load<Sprite>("Shotgun");
         AddStats("All", 0);
-        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite2;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
     }
 

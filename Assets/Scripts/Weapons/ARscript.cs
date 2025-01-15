@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ARScript : ParentWeapon
 {
     private float TakeAway;
+    public Sprite m_sprite2;
 
     public override void AddStats(string stat, float amount)
 
@@ -34,25 +36,15 @@ public class ARScript : ParentWeapon
         }
 
     }
-    private void Awake()
-    {
-        m_damage = 15;
-        m_FireRate = 0.1f;
-        m_projectilespeed = 15;
-        m_Sprite = Resources.Load<Sprite>("AR");
-        AddStats("All", 0);
-        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
-    }
+
 
     private void OnEnable()
     {
         m_damage = 15;
         m_FireRate = 0.1f;
         m_projectilespeed = 15;
-        m_Sprite = Resources.Load<Sprite>("AR");
         AddStats("All", 0);
-        gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = m_sprite2;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
 
     }

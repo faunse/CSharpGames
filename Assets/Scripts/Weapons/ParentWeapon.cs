@@ -14,7 +14,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected float m_damage;
     [SerializeField] protected float m_FireRate;
     [SerializeField] protected Sprite m_Sprite;
-    protected float m_FireTimeout = 0;
+    [SerializeField] protected float m_FireTimeout = 0;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
     public string m_name = "Alfie";
@@ -23,10 +23,9 @@ public abstract class ParentWeapon : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         m_attackAction = InputSystem.actions.FindAction("Attack");
-        
 
     }
 

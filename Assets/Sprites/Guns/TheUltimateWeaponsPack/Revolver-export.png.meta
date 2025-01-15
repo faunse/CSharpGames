@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eeeb72ce437a65e4a99b445c4a2f0a60
+guid: b2b6c55c44784404da2bba0ba29ea344
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4011165979584494121
-    second: Revolver_0
+      213: -6160323111294001445
+    second: Revolver-export_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Revolver_0
+      name: Revolver-export_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 16
-        height: 9
+        x: 4
+        y: 0
+        width: 9
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92af344d4368aa730800000000000000
-      internalID: 4011165979584494121
+      spriteID: bde11b1e4c2228aa0800000000000000
+      internalID: -6160323111294001445
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Revolver_0: 4011165979584494121
+      Revolver-export_0: -6160323111294001445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
