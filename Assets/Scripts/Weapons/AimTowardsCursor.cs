@@ -11,8 +11,19 @@ public class AimTowardsCursor : MonoBehaviour
         mousepos = Camera.main.ScreenToWorldPoint(mousepos);
         Vector2 direction = new Vector2(mousepos.x - transform.position.x, mousepos.y - transform.position.y );
 
+ 
+
         transform.up = direction;
-        
+
+        if (transform.rotation.z <= 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
 
     }
