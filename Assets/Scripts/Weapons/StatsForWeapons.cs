@@ -49,6 +49,7 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.DamageCost;
         if (Pscore >= Cost)
         {
+            Debug.Log("DamageBought");
             Damage = Damage + 1;
             GetComponent<ParentWeapon>().AddStats("Damage", Damage);
             Score(Cost);

@@ -34,22 +34,15 @@ public class HealthScript : MonoBehaviour
 
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    void hurt(float amount)
     {
-        if (collision.CompareTag("Enemy"))
+        m_CurrentHealth -= amount;
+
+        if (m_CurrentHealth <= 0)
         {
-            m_CurrentHealth = m_CurrentHealth - 10;
-
-
-
+            die();
         }
-        if (collision.CompareTag("Trap"))
-        {
-            m_CurrentHealth = m_CurrentHealth - 10;
-
-        }
-
-
 
     }
 

@@ -20,7 +20,7 @@ public class EnemyHealthScript : MonoBehaviour
     public void takeDMG(float incomingDMG)
     {
         health = health - incomingDMG;
-        Debug.Log(health);
+        Debug.Log(incomingDMG);
         if (health <= 0)
         {
             Destroy(gameObject);

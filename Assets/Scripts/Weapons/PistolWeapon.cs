@@ -33,7 +33,8 @@ public class PistolWeapon : ParentWeapon
     {
         if (stat == "Damage")
         {
-            m_damage += amount;
+            m_damage = m_damage + amount;
+            
         }
         if (stat == "FireRate")
         {
@@ -71,6 +72,7 @@ public class PistolWeapon : ParentWeapon
 
             if (bullet.GetComponent<Rigidbody2D>() != null)
             {
+                m_bullet.GetComponent<BulletScript>().BulletStats(m_damage);
                 bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
             }
         }

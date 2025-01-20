@@ -9,6 +9,12 @@ public class BulletScript : MonoBehaviour
   
     }
 
+    public void BulletStats(float m_dmg)
+    {
+        m_Dmg = m_dmg;
+        
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
