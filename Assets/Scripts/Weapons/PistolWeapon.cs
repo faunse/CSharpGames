@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,27 @@ public class PistolWeapon : ParentWeapon
 {
     public float TakeAway;
     public Sprite Sprite;
-    
-   
-    
 
 
-    
+    private void Start()
+    {
+        StartCoroutine(Wait());
+
+
+
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        enabled = true;
+
+
+    }
+
+
+
+
 
     private void OnEnable()
     {
@@ -24,7 +40,7 @@ public class PistolWeapon : ParentWeapon
         m_projectilespeed = 20;
         AddStats("All", 0);
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(0.5f, 0.5f, 1);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 1);
     }
 
 
