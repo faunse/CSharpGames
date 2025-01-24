@@ -10,7 +10,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [Header("Projectile Parameters")]
     [SerializeField] protected GameObject m_bullet;
     [SerializeField] protected Transform m_firepoint;
-    [SerializeField] protected float m_projectilespeed;
+    [SerializeField] protected float m_projectilespeed = 500;
     [SerializeField] protected float m_damage;
     [SerializeField] protected float m_FireRate;
     [SerializeField] protected Sprite m_Sprite;

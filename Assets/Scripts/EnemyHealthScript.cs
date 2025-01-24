@@ -17,13 +17,21 @@ public class EnemyHealthScript : MonoBehaviour
         
     }
 
-    public void takeDMG(float incomingDMG)
+    public void takeDMG(float incomingDMG, bool Fire)
     {
         health = health - incomingDMG;
         Debug.Log(incomingDMG);
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+        if (Fire)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 50);
+            Collider[] hit = colliders;
+            
+            
+            
         }
     }
 }

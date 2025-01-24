@@ -15,6 +15,8 @@ public class StatsForWeapons : MonoBehaviour
     private int Cost2;
     private StorePrices Store;
 
+    public Transform m_Left;
+    public Transform m_Right;
     
 
     private void Update()
@@ -104,29 +106,35 @@ public class StatsForWeapons : MonoBehaviour
     {
         if (Pscore >= Cost)
         {
+            Cost = (int)Store.ARcost;
             GetComponent<PistolWeapon>().enabled = false;
             GetComponent<Shotgun1Script>().enabled = false;
             GetComponent<ARScript>().enabled = true;
+            Score(Cost);
         }
     }
 
     public void BuyShotgun(int Cost)
     {
+        Cost = (int)Store.shotgunCost;
         if (Pscore >= Cost)
         {
             GetComponent<PistolWeapon>().enabled = false;
             GetComponent<Shotgun1Script>().enabled = true;
             GetComponent<ARScript>().enabled = false;
+            Score(Cost);
         }
     }
 
     public void BuyPistol(int Cost)
     {
+        Cost = (int)Store.PistolCost;
         if (Pscore >= Cost)
         {
             GetComponent<PistolWeapon>().enabled = true;
             GetComponent<Shotgun1Script>().enabled = false;
             GetComponent<ARScript>().enabled = false;
+            Score(Cost);
         }
     }
 

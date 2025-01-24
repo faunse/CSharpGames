@@ -9,6 +9,9 @@ public class StorePrices : MonoBehaviour
     public float DamageCost = 80;
     public float RangeCost = 60;
     public float FireRateCost = 80;
+    public float PistolCost = 50;
+    public float shotgunCost = 250;
+    public float ARcost = 500;
     private Score m_scoreSystem;
     private float PSCORE;
 
@@ -66,5 +69,6 @@ public class StorePrices : MonoBehaviour
         }
     }
 
+ 
 
 }

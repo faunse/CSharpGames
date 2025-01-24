@@ -36,8 +36,8 @@ public class PistolWeapon : ParentWeapon
     private void OnEnable()
     {
         m_damage = 5;
-        m_FireRate = 0.4f;
-        m_projectilespeed = 20;
+        m_FireRate = 0.6f;
+        m_projectilespeed = 150;
         AddStats("All", 0);
         gameObject.GetComponent<SpriteRenderer>().sprite = Sprite;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 1);
