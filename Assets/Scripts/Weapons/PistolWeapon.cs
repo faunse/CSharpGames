@@ -88,7 +88,7 @@ public class PistolWeapon : ParentWeapon
 
             if (bullet.GetComponent<Rigidbody2D>() != null)
             {
-                m_bullet.GetComponent<BulletScript>().BulletStats(m_damage);
+                m_bullet.GetComponent<BulletScript>().BulletStats(m_damage, false);
                 bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
             }
         }

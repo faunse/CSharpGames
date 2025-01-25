@@ -8,15 +8,15 @@ using UnityEngine.Playables;
 public class Enemycontroller : MonoBehaviour
 {
 
-    public Transform m_player;
-    public float M_speed;
-    public float m_stoppingDistance;
-    bool m_PlayerInSight;
-    public bool m_Stunned;
+    protected Transform m_player;
+    protected float M_speed;
+    protected float m_stoppingDistance;
+    protected bool m_PlayerInSight;
+    protected bool m_Stunned;
 
-    private bool bCanAttack = true;
+    protected bool bCanAttack = true;
 
-    private float AtkDelay = 2.0f;
+    protected float AtkDelay = 2.0f;
     
     enum EnemyStates
     {
@@ -34,6 +34,8 @@ public class Enemycontroller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        M_speed = 10;
+        m_stoppingDistance = 5;
       
         m_player = FindObjectOfType<TopDownCharacterController>().transform;
         m_State = EnemyStates.MoveToPlayer;
@@ -132,7 +134,7 @@ public class Enemycontroller : MonoBehaviour
 
 
 
-    void Attack()
+    public virtual void Attack()
     {
 
 

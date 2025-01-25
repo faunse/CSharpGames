@@ -61,7 +61,7 @@ public class ARScript : ParentWeapon
 
         if (bullet.GetComponent<Rigidbody2D>() != null)
         {
-            bullet.GetComponent<BulletScript>().BulletStats(m_damage);
+            bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
             bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
         }
 

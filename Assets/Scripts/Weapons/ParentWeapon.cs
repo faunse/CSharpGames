@@ -15,6 +15,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected float m_FireRate;
     [SerializeField] protected Sprite m_Sprite;
     [SerializeField] protected float m_FireTimeout = 0;
+    [SerializeField] public bool AddFireB;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
     public string m_name = "Alfie";

@@ -51,27 +51,16 @@ public class Shotgun1Script : ParentWeapon
         m_stats = GetComponent<StatsForWeapons>();
     }
 
+    public void AddFireBullets(int i)
+    {
+        AddFireB = true;
+        
+    }
+
     protected override void Fire()
     {
         Fire2();
-        return; 
-        Vector3 PlayerPos = transform.position;
-        Vector3 mousepos = Input.mousePosition;
-        Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
-        Vector2 CrossHair = mouseposonscreen - PlayerPos;
-
-
-        
-        GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
-        if (bullet.GetComponent<Rigidbody2D>() != null)
-        {
-            bullet.GetComponent<BulletScript>().BulletStats(m_damage);
-            bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
-        }
-
-
-
-
+        return;
     }
 
     private void Fire2()
@@ -93,7 +82,7 @@ public class Shotgun1Script : ParentWeapon
                 ) - transform.parent.position;
 
             GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
-            bullet.GetComponent<BulletScript>().BulletStats(m_damage);
+            bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
             bullet.GetComponent<Rigidbody2D>().AddForce(fireDirection.normalized * m_projectilespeed, ForceMode2D.Impulse);
         }
 

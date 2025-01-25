@@ -3,15 +3,17 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float m_Dmg;
+    public bool FireT;
     private void OnBecameInvisible()
     {
         
   
     }
 
-    public void BulletStats(float m_dmg)
+    public void BulletStats(float m_dmg, bool A)
     {
         m_Dmg = m_dmg;
+        FireT = A;
         
     }
 
@@ -20,7 +22,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg);
+            collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg,FireT);
             Debug.Log("hit");
 
         }

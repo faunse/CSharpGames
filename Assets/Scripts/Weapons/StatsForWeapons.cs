@@ -17,6 +17,7 @@ public class StatsForWeapons : MonoBehaviour
 
     public Transform m_Left;
     public Transform m_Right;
+    public bool A;
     
 
     private void Update()
@@ -138,8 +139,31 @@ public class StatsForWeapons : MonoBehaviour
         }
     }
 
-    void UpgradeAR(int Cost)
+    public void UpgradeAR(int Cost)
     {
+        Cost = (int)Store.UpgradeARcost;
+        if (Pscore >= Cost)
+        {
+
+            Debug.Log("AR");
+            Score(Cost);
+            return;
+
+            
+        }
+
+    }
+
+    public void UpgradeShotgun(int Cost)
+    {
+        Cost = (int)Store.UpgradeShotgunCost;
+
+        if (Pscore >= Cost)
+        {
+            Score(Cost);
+            GetComponent<Shotgun1Script>().AddFireBullets(12);
+            
+        }
 
     }
 

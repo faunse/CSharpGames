@@ -14,6 +14,9 @@ public class StorePrices : MonoBehaviour
     public float ARcost = 500;
     private Score m_scoreSystem;
     private float PSCORE;
+    public float UpgradeARcost = 2500;
+    public float UpgradeShotgunCost = 1500;
+    public float UpgradePistolCost = 5000;
 
     private void Start()
     {
