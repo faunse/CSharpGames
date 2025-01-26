@@ -34,8 +34,8 @@ public class Enemycontroller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        M_speed = 10;
-        m_stoppingDistance = 5;
+        M_speed = 3;
+        m_stoppingDistance = .75f;
       
         m_player = FindObjectOfType<TopDownCharacterController>().transform;
         m_State = EnemyStates.MoveToPlayer;
@@ -44,7 +44,7 @@ public class Enemycontroller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+     protected virtual void Update()
     {
         switch (m_State)
         {
