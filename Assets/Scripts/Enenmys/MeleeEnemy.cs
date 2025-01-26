@@ -22,7 +22,7 @@ public class MeleeEnemy : Enemycontroller
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
         animator.SetFloat("Speed", 1);
-        Debug.Log("Float");
+       
 
 
     }
@@ -32,7 +32,10 @@ public class MeleeEnemy : Enemycontroller
 
     public override void Attack()
     {
-        Debug.Log("hello");
+        
+        animator.SetTrigger("Attacking");
+        Debug.Log("Grahh");
+        M_speed = 0;
 
     }
 

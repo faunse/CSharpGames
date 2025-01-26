@@ -13,6 +13,7 @@ public class Enemycontroller : MonoBehaviour
     protected float m_stoppingDistance;
     protected bool m_PlayerInSight;
     protected bool m_Stunned;
+    public float m_maxSpeed;
 
     protected bool bCanAttack = true;
 
@@ -34,7 +35,8 @@ public class Enemycontroller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        M_speed = 3;
+        
+        M_speed = m_maxSpeed;
         m_stoppingDistance = .75f;
       
         m_player = FindObjectOfType<TopDownCharacterController>().transform;
@@ -124,6 +126,7 @@ public class Enemycontroller : MonoBehaviour
 
     void HandleStateWalkToPlayer()
     {
+        M_speed = m_maxSpeed;
         if (Vector2.Distance(transform.position, m_player.position) > m_stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, m_player.position, M_speed * Time.deltaTime);
