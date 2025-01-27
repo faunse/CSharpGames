@@ -5,12 +5,14 @@ public class EnemyHealthScript : MonoBehaviour
 {
     
     public float health;
+    private GameObject RoundHandler;
 
-    void Start()
+    private void Start()
     {
-
-        
+        RoundHandler = GameObject.Find("RoundHandler");
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -24,6 +26,7 @@ public class EnemyHealthScript : MonoBehaviour
         Debug.Log(incomingDMG);
         if (health <= 0)
         {
+           RoundHandler.GetComponent<SpawnerScript>().CountTheDead(1);
             Destroy(gameObject);
         }
 

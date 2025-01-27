@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg,FireT);
-            Debug.Log("hit");
+            
 
         }
 

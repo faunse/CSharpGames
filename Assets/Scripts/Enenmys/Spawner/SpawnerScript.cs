@@ -32,6 +32,7 @@ public class SpawnerScript : MonoBehaviour
         if (DeadEnemies == aliveEnemies && Finished == true)
         {
             StartCoroutine("FinishRound");
+            Debug.Log("ROUND FINISHED");
 
         }
     }
@@ -49,6 +50,7 @@ public class SpawnerScript : MonoBehaviour
                 var randomSpawnPoints = Spawners[Random.Range(0, Spawners.Length)];
                 Instantiate(Enemy, randomSpawnPoints.position, Quaternion.identity);
                 aliveEnemies++;
+               
                 
             }
             yield return new WaitForSeconds(SbetweenRounds);
@@ -78,7 +80,7 @@ public class SpawnerScript : MonoBehaviour
 
     private void Update()
     {
-        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible)
+        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == true)
         {
             if (m_store.active == true)
             {

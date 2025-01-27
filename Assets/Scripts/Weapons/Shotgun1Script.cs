@@ -42,7 +42,7 @@ public class Shotgun1Script : ParentWeapon
 
     private void OnEnable()
     {
-        m_FireRate = 0.5f;
+        m_FireRate = 0.8f;
         m_damage = 30;
         m_projectilespeed = 200;
         AddStats("All", 0);
@@ -71,7 +71,7 @@ public class Shotgun1Script : ParentWeapon
         Vector2 CrossHair = mouseposonscreen2 - PlayerPos2;
 
         //Deals with bullet spread
-        int bulletAmount = 6;
+        int bulletAmount = 12;
         for (int i = 0; i < bulletAmount; i++)
         {
             // interpolates between two given points and assigns each pellet a new position within that lerp
