@@ -14,7 +14,7 @@ public class Enemycontroller : MonoBehaviour
     protected bool m_PlayerInSight;
     protected bool m_Stunned;
     public float m_maxSpeed;
-
+    public float m_Damage;
     protected bool bCanAttack = true;
 
     protected float AtkDelay = 2.0f;
@@ -117,7 +117,7 @@ public class Enemycontroller : MonoBehaviour
         if(bCanAttack)
         {
             Attack();
-            Debug.Log("Attacked");
+            
             bCanAttack = false;
             StartCoroutine(AttackDelay());
         }
@@ -133,6 +133,8 @@ public class Enemycontroller : MonoBehaviour
 
         }
     }
+   
+    
 
 
 
@@ -142,6 +144,12 @@ public class Enemycontroller : MonoBehaviour
 
 
     }
+
+    public virtual void AddDificulty(int DMGplus, int Health)
+    {
+
+    }
+
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(AtkDelay);

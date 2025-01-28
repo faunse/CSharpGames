@@ -17,7 +17,12 @@ public class AimTowardsCursor : MonoBehaviour
         
 
         // Flips Sprite
-        GetComponent<SpriteRenderer>().flipX = (!(transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 180));
+        if (gameObject.GetComponent<SpriteRenderer>() != null )
+        {
+            GetComponent<SpriteRenderer>().flipX = (!(transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 180));
+
+        }
+       
 
         /*if (!(transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 180))
         {

@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
     public void Bought(int Cost)
     {
         m_score = m_score - Cost;
-        Debug.Log(m_score);
+        
     }
 
   

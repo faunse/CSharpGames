@@ -43,11 +43,11 @@ public class Shotgun1Script : ParentWeapon
     private void OnEnable()
     {
         m_FireRate = 0.8f;
-        m_damage = 30;
-        m_projectilespeed = 200;
+        m_damage = 12;
+        m_projectilespeed = 10;
         AddStats("All", 0);
         gameObject.GetComponent<SpriteRenderer>().sprite = m_Sprite2;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(0.05f, 0.05f, 1);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.03f, 0.03f, 1);
         m_stats = GetComponent<StatsForWeapons>();
     }
 
@@ -71,7 +71,7 @@ public class Shotgun1Script : ParentWeapon
         Vector2 CrossHair = mouseposonscreen2 - PlayerPos2;
 
         //Deals with bullet spread
-        int bulletAmount = 12;
+        int bulletAmount = 20;
         for (int i = 0; i < bulletAmount; i++)
         {
             // interpolates between two given points and assigns each pellet a new position within that lerp

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealthScript : MonoBehaviour
@@ -6,6 +7,7 @@ public class EnemyHealthScript : MonoBehaviour
     
     public float health;
     private GameObject RoundHandler;
+    private int L = 1;
 
     private void Start()
     {
@@ -20,14 +22,22 @@ public class EnemyHealthScript : MonoBehaviour
         
     }
 
+    public void AddHealth(int H)
+    {
+        health = health + H;
+
+    }
+
     public void takeDMG(float incomingDMG, bool Fire)
     {
         health = health - incomingDMG;
-        Debug.Log(incomingDMG);
+        
         if (health <= 0)
         {
-           RoundHandler.GetComponent<SpawnerScript>().CountTheDead(1);
-            Destroy(gameObject);
+            
+           RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
+            L = 0;
+           Destroy(gameObject);
         }
 
         if (Fire)

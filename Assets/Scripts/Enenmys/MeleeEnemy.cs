@@ -6,12 +6,13 @@ public class MeleeEnemy : Enemycontroller
 
     private float m_Horizontal;
     private float m_Vertical;
-    public GameObject m_player;
+    public new GameObject m_player;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         m_player = GameObject.Find("Character");
+        m_Damage = 10;
 
     }
 
@@ -34,11 +35,15 @@ public class MeleeEnemy : Enemycontroller
     {
         
         animator.SetTrigger("Attacking");
-        Debug.Log("Grahh");
+        
         M_speed = 0;
 
     }
 
-    
-
+    public override void AddDificulty(int D, int H)
+    {
+        m_Damage += D;
+        gameObject.GetComponent<EnemyHealthScript>().AddHealth(H);
+        
+    }
 }

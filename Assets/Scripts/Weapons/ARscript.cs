@@ -42,10 +42,10 @@ public class ARScript : ParentWeapon
     {
         m_damage = 15;
         m_FireRate = 0.1f;
-        m_projectilespeed = 15;
+        m_projectilespeed = 150;
         AddStats("All", 0);
         gameObject.GetComponent<SpriteRenderer>().sprite = m_sprite2;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 1);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(0.03f, 0.03f, 1);
 
     }
     protected override void Fire()

@@ -24,6 +24,7 @@ public class BulletScript : MonoBehaviour
         {
             collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg,FireT);
             
+            
 
         }
 
