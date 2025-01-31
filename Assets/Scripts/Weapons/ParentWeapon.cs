@@ -1,4 +1,6 @@
 using System.Buffers;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +18,8 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected Sprite m_Sprite;
     [SerializeField] protected float m_FireTimeout = 0;
     [SerializeField] public bool AddFireB;
+    private GameObject M_Flash;
+    [SerializeField] public ParticleSystem ParticleSystem;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
     public string m_name = "Alfie";
@@ -27,10 +31,14 @@ public abstract class ParentWeapon : MonoBehaviour
     void Awake()
     {
         m_attackAction = InputSystem.actions.FindAction("Attack");
-
+        
     }
 
-    
+    private void Start()
+    {
+        M_Flash = gameObject.transform.Find("GunSparkLight 2D").gameObject;
+        M_Flash.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,6 +51,7 @@ public abstract class ParentWeapon : MonoBehaviour
         {
             m_FireTimeout = Time.time + m_FireRate;
             Fire();
+            StartCoroutine(MuzzleFlash());
             
             
         }
@@ -61,6 +70,18 @@ public abstract class ParentWeapon : MonoBehaviour
 
 
     protected abstract void Fire();
+
+    public IEnumerator MuzzleFlash()
+    {
+        M_Flash.SetActive(true);
+        ParticleSystem.Play(m_firepoint);
+        yield return new WaitForSeconds(0.1f);
+        M_Flash.SetActive(false);
+
+
+    }
     
 }
+
+
 

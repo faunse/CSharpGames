@@ -94,7 +94,7 @@ public class SpawnerScript : MonoBehaviour
 
     private void Update()
     {
-        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == true)
+        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == false)
         {
 
             if (m_store.active == true)

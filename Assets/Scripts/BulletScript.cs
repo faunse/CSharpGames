@@ -14,6 +14,7 @@ public class BulletScript : MonoBehaviour
     {
         m_Dmg = m_dmg;
         FireT = A;
+        Debug.Log(m_dmg);
         
     }
 
