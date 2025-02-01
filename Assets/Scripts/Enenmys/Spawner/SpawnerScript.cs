@@ -24,7 +24,6 @@ public class SpawnerScript : MonoBehaviour
 
     public void CountTheDead(int Dead)
     {
-
         DeadEnemies = Dead + DeadEnemies;
         CheckRoundStatus();
     }
@@ -39,13 +38,9 @@ public class SpawnerScript : MonoBehaviour
                 flow = 0;
                 Debug.Log("Finish");
                 StartCoroutine("FinishRound");
-            }
-           
-            
-
+            }                    
         }
     }
-
     public IEnumerator StartRound()
     {
         aliveEnemies = 0;
@@ -63,9 +58,7 @@ public class SpawnerScript : MonoBehaviour
                 Instantiate(Enemy, randomSpawnPoints.position, Quaternion.identity);
                 aliveEnemies++;
              
-            }
-            
-           
+            }           
             Debug.Log($"Rounds " + RoundsOfEnemies);
             yield return new WaitForSeconds(SbetweenRounds);
         }
@@ -89,9 +82,6 @@ public class SpawnerScript : MonoBehaviour
         
         m_OpenShop = InputSystem.actions.FindAction("OpenShop");
     }
-
-
-
     private void Update()
     {
         if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == false)
@@ -101,22 +91,18 @@ public class SpawnerScript : MonoBehaviour
             {
                 Debug.Log("CLOSE");
                 m_store.SetActive(false);
-
             }
             else
             {
                 Debug.Log("OPEN");
                 m_store.SetActive(true);
             }
-            
-            
-
+                     
         }
     }
 
     private void PreStart()
     {
-
         currentRound++;
         if (currentRound % 3 == 0)
         {
@@ -137,8 +123,6 @@ public class SpawnerScript : MonoBehaviour
         {
             SbetweenRounds -= 0.5f;
         }
-
-
     }    
 }
 

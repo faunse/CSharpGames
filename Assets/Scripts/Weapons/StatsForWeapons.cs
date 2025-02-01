@@ -21,32 +21,24 @@ public class StatsForWeapons : MonoBehaviour
     
 
     private void Update()
-    {
-        
-        Pscore = gameObject.GetComponentInParent<Score>().m_score;
-        
+    {       
+        Pscore = gameObject.GetComponentInParent<Score>().m_score;   
     }
 
     private void Start()
     {
-        Store = GameObject.Find("StoreParentCanvas").GetComponent<StorePrices>();
-        
-    }
-
-    
-
+        Store = GameObject.Find("StoreParentCanvas").GetComponent<StorePrices>();       
+    }    
     public void AddFirerate(int Cost)
     {
         Cost = (int)Store.FireRateCost;
         if (Pscore >= Cost)
-        {
-            
+        {     
             FireRate = FireRate + 0.05f;
             gameObject.GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
             Score(Cost);
         }
     }
-
     public void AddDamage(int Cost)
     {
         Cost = (int)Store.DamageCost;
@@ -58,7 +50,6 @@ public class StatsForWeapons : MonoBehaviour
             Score(Cost);
         }
     }
-
     public void AddRange(int Cost)
     {
         Cost = (int)Store.RangeCost;
@@ -69,7 +60,6 @@ public class StatsForWeapons : MonoBehaviour
             Score(Cost);
         }
     }
-
     public void AddHealh(int Cost)
     {
         Cost = (int)Store.HealthCost;
@@ -85,8 +75,6 @@ public class StatsForWeapons : MonoBehaviour
         }
 
     }
-
-
     public void AddSpeed(int Cost)
     {
         Cost = (int)Store.SpeedCost;
@@ -95,9 +83,7 @@ public class StatsForWeapons : MonoBehaviour
             gameObject.GetComponentInParent<TopDownCharacterController>().m_playerSpeed += 25;
             Score(Cost);
         }
-
     }
-
     public void Score(int cost)
     {
         gameObject.GetComponentInParent<Score>().Bought(cost);
@@ -114,7 +100,6 @@ public class StatsForWeapons : MonoBehaviour
             Score(Cost);
         }
     }
-
     public void BuyShotgun(int Cost)
     {
         Cost = (int)Store.shotgunCost;
@@ -126,7 +111,6 @@ public class StatsForWeapons : MonoBehaviour
             Score(Cost);
         }
     }
-
     public void BuyPistol(int Cost)
     {
         Cost = (int)Store.PistolCost;
@@ -147,13 +131,9 @@ public class StatsForWeapons : MonoBehaviour
 
             Debug.Log("AR");
             Score(Cost);
-            return;
-
-            
+            return;           
         }
-
     }
-
     public void UpgradeShotgun(int Cost)
     {
         Cost = (int)Store.UpgradeShotgunCost;
@@ -161,12 +141,7 @@ public class StatsForWeapons : MonoBehaviour
         if (Pscore >= Cost)
         {
             Score(Cost);
-            GetComponent<Shotgun1Script>().AddFireBullets(12);
-            
+            GetComponent<Shotgun1Script>().AddFireBullets(12);            
         }
-
     }
-
-
-
 }

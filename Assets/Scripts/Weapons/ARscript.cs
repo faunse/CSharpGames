@@ -10,7 +10,6 @@ public class ARScript : ParentWeapon
 {
     private float TakeAway;
     public Sprite m_sprite2;
-
     public override void AddStats(string stat, float amount)
 
     {
@@ -36,8 +35,6 @@ public class ARScript : ParentWeapon
         }
 
     }
-
-
     private void OnEnable()
     {
         m_damage = 15;
@@ -46,7 +43,6 @@ public class ARScript : ParentWeapon
         AddStats("All", 0);
         gameObject.GetComponent<SpriteRenderer>().sprite = m_sprite2;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.03f, 0.03f, 1);
-
     }
     protected override void Fire()
     {
@@ -54,9 +50,6 @@ public class ARScript : ParentWeapon
         Vector3 mousepos = Input.mousePosition;
         Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
         Vector2 CrossHair = mouseposonscreen - PlayerPos;
-
-
-
         GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
 
         if (bullet.GetComponent<Rigidbody2D>() != null)

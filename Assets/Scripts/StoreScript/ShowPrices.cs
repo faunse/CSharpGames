@@ -28,27 +28,21 @@ public class ShowPrices : MonoBehaviour
         {
             m_Price = m_Priced.DamageCost;
             m_PriceText.text = "Price " + m_Price;
-
         }
         if (Item == "Speed")
         {
             m_Price = m_Priced.SpeedCost;
             m_PriceText.text = "Price " + m_Price;
-
         }
         if (Item == "Range")
         {
             m_Price = m_Priced.RangeCost;
             m_PriceText.text = "Price " + m_Price;
-
         }
         if (Item == "Rate of fire")
         {
             m_Price = m_Priced.FireRateCost;
             m_PriceText.text = "Price " + m_Price;
-
         }
-
-
     }
 }

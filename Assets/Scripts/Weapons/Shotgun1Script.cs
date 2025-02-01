@@ -54,7 +54,6 @@ public class Shotgun1Script : ParentWeapon
     public void AddFireBullets(int i)
     {
         AddFireB = true;
-        
     }
 
     protected override void Fire()
@@ -69,7 +68,6 @@ public class Shotgun1Script : ParentWeapon
         Vector3 mousepos2 = Input.mousePosition;
         Vector3 mouseposonscreen2 = Camera.main.ScreenToWorldPoint(mousepos2);
         Vector2 CrossHair = mouseposonscreen2 - PlayerPos2;
-
         //Deals with bullet spread
         int bulletAmount = 20;
         for (int i = 0; i < bulletAmount; i++)
@@ -80,13 +78,9 @@ public class Shotgun1Script : ParentWeapon
                 Mathf.Lerp(m_stats.m_Left.position.y, m_stats.m_Right.position.y, (float)i / (float)bulletAmount),
                 Mathf.Lerp(m_stats.m_Left.position.z, m_stats.m_Right.position.z, (float)i / (float)bulletAmount)
                 ) - transform.parent.position;
-
             GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
             bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
             bullet.GetComponent<Rigidbody2D>().AddForce(fireDirection.normalized * m_projectilespeed, ForceMode2D.Impulse);
         }
-
-
-
     }
 }

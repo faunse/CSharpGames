@@ -72,7 +72,6 @@ public class PistolWeapon : ParentWeapon
         }
 
     }
-
     protected override void Fire()
     {
         {
@@ -81,11 +80,7 @@ public class PistolWeapon : ParentWeapon
             Vector3 mousepos = Input.mousePosition;
             Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
             Vector2 CrossHair = mouseposonscreen - PlayerPos;
-
-
-
             GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
-
             if (bullet.GetComponent<Rigidbody2D>() != null)
             {
                 m_bullet.GetComponent<BulletScript>().BulletStats(m_damage, false);

@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxSpeed: 3
+  m_Damage: 0
   animator: {fileID: 0}
   m_player: {fileID: 0}
 --- !u!114 &2312652026270666216
