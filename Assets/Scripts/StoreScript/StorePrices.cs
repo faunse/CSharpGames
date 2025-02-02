@@ -20,23 +20,16 @@ public class StorePrices : MonoBehaviour
 
     private void Start()
     {
-        m_scoreSystem = GameObject.Find("Character").GetComponent<Score>();
-        
+        m_scoreSystem = GameObject.Find("Character").GetComponent<Score>();      
     }
-
     private void Update()
     {
-        PSCORE = m_scoreSystem.m_score;
-        
+        PSCORE = m_scoreSystem.m_score;     
     }
-
-
-
     public void HealthBuy()
     {
         if (PSCORE >= HealthCost)
         {
-
             HealthCost = HealthCost + HealthCost * 0.2f;
             HealthCost = Mathf.RoundToInt(HealthCost);
         }
@@ -55,7 +48,6 @@ public class StorePrices : MonoBehaviour
             DamageCost = DamageCost * 2;
         }
     }
-
     public void RangeBuy()
     {
         if (PSCORE >= RangeCost)
@@ -63,15 +55,12 @@ public class StorePrices : MonoBehaviour
             RangeCost = RangeCost * 2;
         }
     }
-
     public void FireRateBuy()
     {
         if (PSCORE >= FireRateCost)
         { 
             FireRateCost = FireRateCost * 1.5f;
         }
-    }
-
- 
+    } 
 
 }
