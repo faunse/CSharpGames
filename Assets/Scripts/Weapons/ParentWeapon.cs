@@ -22,6 +22,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] public ParticleSystem ParticleSystem;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
+    public GameObject LightPoint;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,8 +42,13 @@ public abstract class ParentWeapon : MonoBehaviour
         {
             m_FireTimeout = Time.time + m_FireRate;
             Fire();
-            StartCoroutine(MuzzleFlash());
+            
         }
+    }
+
+    private void OnEnable()
+    {
+        LightPoint.SetActive(true);
     }
     public void ChangeWeaponAR()
     {
@@ -51,12 +57,22 @@ public abstract class ParentWeapon : MonoBehaviour
     }
     public abstract void AddStats(string stat, float amount);
     protected abstract void Fire();
+    public abstract void Light(bool F);
     public IEnumerator MuzzleFlash()
     {
         M_Flash.SetActive(true);
         ParticleSystem.Play(m_firepoint);
         yield return new WaitForSeconds(0.1f);
         M_Flash.SetActive(false);
+    }
+
+    public IEnumerator Flash()
+    {
+        Light(true);
+        
+        yield return new WaitForSeconds(0.05f);
+        Light(false);
+
     }
 }
 

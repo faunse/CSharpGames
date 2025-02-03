@@ -1,6 +1,7 @@
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using System.Linq;
 
 public class StatsForWeapons : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class StatsForWeapons : MonoBehaviour
     private int Cost2;
     private StorePrices Store;
 
-    public Transform m_Left;
-    public Transform m_Right;
     public bool A;
+
+    //List<ParentWeapon> Weapons;
+    List<GameObject> Weapons;
     
 
     private void Update()
@@ -28,6 +30,19 @@ public class StatsForWeapons : MonoBehaviour
     private void Start()
     {
         Store = GameObject.Find("StoreParentCanvas").GetComponent<StorePrices>();       
+        Weapons = new List<GameObject>();
+        ParentWeapon[] weaponComps = gameObject.GetComponentsInChildren<ParentWeapon>();
+        
+        foreach (ParentWeapon weapon in weaponComps)
+        {
+            Weapons.Add(weapon.gameObject);
+            Debug.Log("j");
+        }
+
+        foreach (GameObject weapon in Weapons)
+        {
+            weapon.SetActive(false);
+        }
     }    
     public void AddFirerate(int Cost)
     {
@@ -35,7 +50,10 @@ public class StatsForWeapons : MonoBehaviour
         if (Pscore >= Cost)
         {     
             FireRate = FireRate + 0.05f;
-            gameObject.GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
+            foreach (GameObject weapon in Weapons)
+            {
+                weapon.GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
+            }
             Score(Cost);
         }
     }
@@ -46,7 +64,10 @@ public class StatsForWeapons : MonoBehaviour
         {
             Debug.Log("DamageBought");
             Damage = Damage + 1;
-            GetComponent<ParentWeapon>().AddStats("Damage", Damage);
+            foreach (GameObject weapon in Weapons)
+            {
+                weapon.GetComponent<ParentWeapon>().AddStats("Damage", Damage);
+            }
             Score(Cost);
         }
     }
@@ -56,7 +77,10 @@ public class StatsForWeapons : MonoBehaviour
         if (Pscore >= Cost)
         {
             range = range + 0.5f;
-            GetComponent<ParentWeapon>().AddStats("Range", range);
+            foreach (GameObject weapon in Weapons)
+            {
+                weapon.GetComponent<ParentWeapon>().AddStats("Range", range);
+            }
             Score(Cost);
         }
     }
@@ -94,9 +118,26 @@ public class StatsForWeapons : MonoBehaviour
         if (Pscore >= Cost)
         {
             Cost = (int)Store.ARcost;
-            GetComponent<PistolWeapon>().enabled = false;
-            GetComponent<Shotgun1Script>().enabled = false;
-            GetComponent<ARScript>().enabled = true;
+            
+            foreach (GameObject weapon in Weapons)
+            {
+                if (weapon.name.Equals("AKFP"))
+                {
+                    weapon.SetActive(true);
+                    weapon.GetComponent<SpriteRenderer>().enabled = true;
+                  
+                    weapon.GetComponent<ParentWeapon>().enabled = true;
+                    Debug.Log("AR");
+                }
+                else
+                {
+                    weapon.SetActive(false);
+                    weapon.GetComponent<SpriteRenderer>().enabled = false;
+                  
+                    weapon.GetComponent <ParentWeapon>().enabled = false;
+                    Debug.Log("not");
+                }
+            }
             Score(Cost);
         }
     }
@@ -105,9 +146,24 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.shotgunCost;
         if (Pscore >= Cost)
         {
-            GetComponent<PistolWeapon>().enabled = false;
-            GetComponent<Shotgun1Script>().enabled = true;
-            GetComponent<ARScript>().enabled = false;
+            foreach (GameObject weapon in Weapons)
+            {
+                if (weapon.name.Equals("SHOTGUNFP"))
+                {
+                    weapon.SetActive(true);
+                    weapon.GetComponent<SpriteRenderer>().enabled = true;
+             
+                    weapon.GetComponent<ParentWeapon>().enabled = true;
+                }
+                else
+                {
+                    weapon.SetActive(false);
+                    weapon.GetComponent<SpriteRenderer>().enabled = false;
+                  
+                    weapon.GetComponent<ParentWeapon>().enabled = false;
+                }
+            }
+
             Score(Cost);
         }
     }
@@ -116,9 +172,24 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.PistolCost;
         if (Pscore >= Cost)
         {
-            GetComponent<PistolWeapon>().enabled = true;
-            GetComponent<Shotgun1Script>().enabled = false;
-            GetComponent<ARScript>().enabled = false;
+            foreach (GameObject weapon in Weapons)
+            {
+                
+                if (weapon.name.Equals("RevolverFP"))
+                {
+                    weapon.SetActive(true);
+                    weapon.GetComponent<SpriteRenderer>().enabled = true;
+                  
+                    weapon.GetComponent<ParentWeapon>().enabled = true;
+                }
+                else
+                {
+                    weapon.SetActive(false);
+                    weapon.GetComponent<SpriteRenderer>().enabled = false;
+                   
+                    weapon.GetComponent<ParentWeapon>().enabled = false;
+                }
+            }
             Score(Cost);
         }
     }
