@@ -53,6 +53,7 @@ public class PistolWeapon : ParentWeapon
         {
             m_damage = m_damage + amount;
             
+            
         }
         if (stat == "FireRate")
         {

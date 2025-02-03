@@ -18,7 +18,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected Sprite m_Sprite;
     [SerializeField] protected float m_FireTimeout = 0;
     [SerializeField] public bool AddFireB;
-    private GameObject M_Flash;
+   
     [SerializeField] public ParticleSystem ParticleSystem;
     //[SerializeField] private Vector2 m_lastdirection;
     private InputAction m_attackAction;
@@ -30,11 +30,7 @@ public abstract class ParentWeapon : MonoBehaviour
     {
         m_attackAction = InputSystem.actions.FindAction("Attack");
     }
-    private void Start()
-    {
-        M_Flash = gameObject.transform.Find("GunSparkLight 2D").gameObject;
-        M_Flash.SetActive(false);
-    }
+ 
     // Update is called once per frame
     void Update()
     {
@@ -58,13 +54,7 @@ public abstract class ParentWeapon : MonoBehaviour
     public abstract void AddStats(string stat, float amount);
     protected abstract void Fire();
     public abstract void Light(bool F);
-    public IEnumerator MuzzleFlash()
-    {
-        M_Flash.SetActive(true);
-        ParticleSystem.Play(m_firepoint);
-        yield return new WaitForSeconds(0.1f);
-        M_Flash.SetActive(false);
-    }
+
 
     public IEnumerator Flash()
     {
