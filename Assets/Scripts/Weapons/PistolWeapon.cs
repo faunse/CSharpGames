@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class PistolWeapon : ParentWeapon
@@ -39,8 +40,9 @@ public class PistolWeapon : ParentWeapon
         m_FireRate = 0.6f;
         m_projectilespeed = 150;
         AddStats("All", 0);
-        gameObject.GetComponent<SpriteRenderer>().sprite = Sprite;
+        gameObject.GetComponentInParent<SpriteRenderer>().sprite = Sprite;
         gameObject.GetComponent<Transform>().localScale = new Vector3(0.8f, 0.8f, 1);
+        LightPoint.SetActive(true);
     }
 
 
@@ -64,8 +66,8 @@ public class PistolWeapon : ParentWeapon
         }
         if (stat == "All")
         {
-            m_damage = GetComponent<StatsForWeapons>().Damage + m_damage;
-            TakeAway = GetComponent<StatsForWeapons>().FireRate;
+            m_damage = GetComponentInParent<StatsForWeapons>().Damage + m_damage;
+            TakeAway = GetComponentInParent<StatsForWeapons>().FireRate;
             m_FireRate = m_FireRate - TakeAway;
 
 
@@ -81,11 +83,23 @@ public class PistolWeapon : ParentWeapon
             Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
             Vector2 CrossHair = mouseposonscreen - PlayerPos;
             GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
+            StartCoroutine("Flash");
             if (bullet.GetComponent<Rigidbody2D>() != null)
             {
                 m_bullet.GetComponent<BulletScript>().BulletStats(m_damage, false);
                 bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
             }
+        }
+    }
+    public override void Light(bool F)
+    {
+        if (F)
+        {
+            LightPoint.GetComponent<Light2D>().enabled = true;
+        }
+        else
+        {
+            LightPoint.GetComponent<Light2D>().enabled = false;
         }
     }
 }
