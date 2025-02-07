@@ -35,29 +35,35 @@ public class ARScript : ParentWeapon
         }
 
     }
-    private void OnEnable()
+    private void Start()
     {
         m_damage = 15;
         m_FireRate = 0.35f;
         m_projectilespeed = 150;
-        AddStats("All", 0);
-        gameObject.GetComponentInParent<SpriteRenderer>().sprite = m_sprite2;
        
-        LightPoint.SetActive(true);
     }
+
+    
     protected override void Fire()
     {
-        Vector3 PlayerPos = transform.position;
-        Vector3 mousepos = Input.mousePosition;
-        Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
-        Vector2 CrossHair = mouseposonscreen - PlayerPos;
-        StartCoroutine("Flash");
-        GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
-        if (bullet.GetComponent<Rigidbody2D>() != null)
+
+        if (Active == true)
         {
-            bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
-            bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
+            Vector3 PlayerPos = transform.position;
+            Vector3 mousepos = Input.mousePosition;
+            Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
+            Vector2 CrossHair = mouseposonscreen - PlayerPos;
+            StartCoroutine("Flash");
+            GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
+            if (bullet.GetComponent<Rigidbody2D>() != null)
+            {
+                bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
+                bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
+            }
+
+
         }
+      
 
     }
     public override void Light(bool F)
@@ -70,5 +76,24 @@ public class ARScript : ParentWeapon
         {
             LightPoint.GetComponent<Light2D>().enabled = false;
         }
+    }
+
+    public override void SetActiveWeapon(bool Activate)
+    {
+        Debug.Log(Activate);
+        if (Active)
+        {
+            AddStats("All", 0);
+            LightPoint.SetActive(true);
+            Active = Activate;
+
+        }
+        else
+        {
+            LightPoint.SetActive(false);
+            Active = Activate;
+        }
+        
+
     }
 }

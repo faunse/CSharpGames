@@ -35,7 +35,7 @@ public class MeleeEnemy : Enemycontroller
     {
         
         animator.SetTrigger("Attacking");
-        
+        m_player.GetComponent<HealthScript>().hurt(m_Damage);
         M_speed = 0;
 
     }

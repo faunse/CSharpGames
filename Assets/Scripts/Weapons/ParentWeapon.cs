@@ -18,6 +18,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected Sprite m_Sprite;
     [SerializeField] protected float m_FireTimeout = 0;
     [SerializeField] public bool AddFireB;
+    [SerializeField] public bool Active;
    
     [SerializeField] public ParticleSystem ParticleSystem;
     //[SerializeField] private Vector2 m_lastdirection;
@@ -42,18 +43,16 @@ public abstract class ParentWeapon : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        LightPoint.SetActive(true);
-    }
-    public void ChangeWeaponAR()
-    {
-        m_damage = 100;
-        m_FireRate = 0.2f;
-    }
+
+ 
     public abstract void AddStats(string stat, float amount);
+
     protected abstract void Fire();
+
     public abstract void Light(bool F);
+
+
+    public abstract void SetActiveWeapon(bool Activate);
 
 
     public IEnumerator Flash()

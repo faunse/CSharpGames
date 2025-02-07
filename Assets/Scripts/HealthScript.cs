@@ -11,6 +11,7 @@ public class HealthScript : MonoBehaviour
     public float m_CurrentHealth;
     public float m_MaxHealth = 100;
     public float m_enemydamage;
+    public GameObject m_DeathMenu;
     
 
     void Start()
@@ -35,7 +36,7 @@ public class HealthScript : MonoBehaviour
         
     }
 
-    void hurt(float amount)
+    public void hurt(float amount)
     {
         m_CurrentHealth -= amount;
 
@@ -48,7 +49,8 @@ public class HealthScript : MonoBehaviour
 
     void die()
     {
-
+        m_DeathMenu.SetActive(true);
+        Time.timeScale = 0f;
 
     }
 }

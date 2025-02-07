@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyHealthScript : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class EnemyHealthScript : MonoBehaviour
             
            RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
             L = 0;
+            GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore();
+
            Destroy(gameObject);
         }
 

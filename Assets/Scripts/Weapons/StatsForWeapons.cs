@@ -24,7 +24,7 @@ public class StatsForWeapons : MonoBehaviour
 
     private void Update()
     {       
-        Pscore = gameObject.GetComponentInParent<Score>().m_score;   
+        Pscore = gameObject.GetComponentInParent<ScoreSystem>().m_score;   
     }
 
     private void Start()
@@ -36,12 +36,18 @@ public class StatsForWeapons : MonoBehaviour
         foreach (ParentWeapon weapon in weaponComps)
         {
             Weapons.Add(weapon.gameObject);
-            Debug.Log("j");
+            
         }
 
         foreach (GameObject weapon in Weapons)
         {
-            weapon.SetActive(false);
+        
+            weapon.GetComponent<ParentWeapon>().SetActiveWeapon(false);
+            if (weapon.name.Equals("RevolverFP"))
+            {
+                weapon.GetComponent<ParentWeapon>().SetActiveWeapon(true);
+
+            }
         }
     }    
     public void AddFirerate(int Cost)
@@ -110,31 +116,32 @@ public class StatsForWeapons : MonoBehaviour
     }
     public void Score(int cost)
     {
-        gameObject.GetComponentInParent<Score>().Bought(cost);
+        gameObject.GetComponentInParent<ScoreSystem>().Bought(cost);
     }
 
     public void BuyAR(int Cost)
     {
+        Cost = (int)Store.ARcost;
         if (Pscore >= Cost)
         {
-            Cost = (int)Store.ARcost;
+            
             
             foreach (GameObject weapon in Weapons)
             {
                 if (weapon.name.Equals("AKFP"))
                 {
-                    weapon.SetActive(true);
+              
                     weapon.GetComponent<SpriteRenderer>().enabled = true;
-                  
-                    weapon.GetComponent<ParentWeapon>().enabled = true;
+
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(true);
                     Debug.Log("AR");
                 }
                 else
                 {
-                    weapon.SetActive(false);
+                    
                     weapon.GetComponent<SpriteRenderer>().enabled = false;
-                  
-                    weapon.GetComponent <ParentWeapon>().enabled = false;
+
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(false);
                     Debug.Log("not");
                 }
             }
@@ -150,17 +157,16 @@ public class StatsForWeapons : MonoBehaviour
             {
                 if (weapon.name.Equals("SHOTGUNFP"))
                 {
-                    weapon.SetActive(true);
                     weapon.GetComponent<SpriteRenderer>().enabled = true;
-             
-                    weapon.GetComponent<ParentWeapon>().enabled = true;
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(true);
+                    Debug.Log("Shotgun");
                 }
                 else
                 {
-                    weapon.SetActive(false);
+                    
                     weapon.GetComponent<SpriteRenderer>().enabled = false;
-                  
-                    weapon.GetComponent<ParentWeapon>().enabled = false;
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(false);
+
                 }
             }
 
@@ -177,17 +183,17 @@ public class StatsForWeapons : MonoBehaviour
                 
                 if (weapon.name.Equals("RevolverFP"))
                 {
-                    weapon.SetActive(true);
+                    
                     weapon.GetComponent<SpriteRenderer>().enabled = true;
-                  
-                    weapon.GetComponent<ParentWeapon>().enabled = true;
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(true);
+
                 }
                 else
                 {
-                    weapon.SetActive(false);
+                    
                     weapon.GetComponent<SpriteRenderer>().enabled = false;
-                   
-                    weapon.GetComponent<ParentWeapon>().enabled = false;
+                    weapon.GetComponent<ParentWeapon>().SetActiveWeapon(false);
+
                 }
             }
             Score(Cost);

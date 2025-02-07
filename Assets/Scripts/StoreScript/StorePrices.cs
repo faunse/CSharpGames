@@ -12,7 +12,7 @@ public class StorePrices : MonoBehaviour
     public float PistolCost = 50;
     public float shotgunCost = 250;
     public float ARcost = 500;
-    private Score m_scoreSystem;
+    private ScoreSystem m_scoreSystem;
     private float PSCORE;
     public float UpgradeARcost = 2500;
     public float UpgradeShotgunCost = 1500;
@@ -20,7 +20,7 @@ public class StorePrices : MonoBehaviour
 
     private void Start()
     {
-        m_scoreSystem = GameObject.Find("Character").GetComponent<Score>();      
+        m_scoreSystem = GameObject.Find("Character").GetComponent<ScoreSystem>();      
     }
     private void Update()
     {

@@ -9,7 +9,7 @@ public class MainMenuScreen : MonoBehaviour
     public void OnStart()
     {
         SceneManager.LoadScene("Level");
-        Debug.Log("ChangeScene");
+        Time.timeScale = 1.0f;
         
     }
 

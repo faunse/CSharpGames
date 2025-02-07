@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    private Score m_scoreSystem;
+    private ScoreSystem m_scoreSystem;
 
     private TMPro.TextMeshProUGUI m_ScoreText;
 
@@ -13,7 +13,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         m_ScoreText = (TextMeshProUGUI)GetComponent<TMPro.TMP_Text>();
 
-        m_scoreSystem = GameObject.Find("Character").GetComponent<Score>();
+        m_scoreSystem = GameObject.Find("Character").GetComponent<ScoreSystem>();
 
     }
 
