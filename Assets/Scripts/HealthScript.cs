@@ -53,4 +53,9 @@ public class HealthScript : MonoBehaviour
         Time.timeScale = 0f;
 
     }
+
+    public void AddHealth(int health)
+    {
+        m_CurrentHealth += health;
+    }
 }

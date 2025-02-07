@@ -9,6 +9,7 @@ TagManager:
   - PlayerProjectile
   - Main
   - Trap
+  - Pickup
   layers:
   - Default
   - TransparentFX

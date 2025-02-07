@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  m_Pickup: {fileID: 6530392484038027284, guid: bd044b60cc67e88498a08138988354d1, type: 3}
 --- !u!95 &8873430968003924882
 Animator:
   serializedVersion: 7

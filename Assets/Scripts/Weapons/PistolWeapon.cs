@@ -101,7 +101,7 @@ public class PistolWeapon : ParentWeapon
         }
     }
 
-    public override void SetActiveWeapon(bool Activate)
+    /*public override void SetActiveWeapon(bool Activate)
     {
         if (Active)
         {
@@ -117,5 +117,5 @@ public class PistolWeapon : ParentWeapon
         }
 
 
-    }
+    }*/
 }

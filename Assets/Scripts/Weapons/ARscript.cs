@@ -78,7 +78,7 @@ public class ARScript : ParentWeapon
         }
     }
 
-    public override void SetActiveWeapon(bool Activate)
+    /*public override void SetActiveWeapon(bool Activate)
     {
         Debug.Log(Activate);
         if (Active)
@@ -95,5 +95,5 @@ public class ARScript : ParentWeapon
         }
         
 
-    }
+    }*/
 }

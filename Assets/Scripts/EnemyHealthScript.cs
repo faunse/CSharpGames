@@ -9,6 +9,9 @@ public class EnemyHealthScript : MonoBehaviour
     public float health;
     private GameObject RoundHandler;
     private int L = 1;
+    public GameObject m_Pickup;
+
+    private bool heartSpawned = false;
 
     private void Start()
     {
@@ -19,14 +22,12 @@ public class EnemyHealthScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {    
     }
 
     public void AddHealth(int H)
     {
         health = health + H;
-
     }
 
     public void takeDMG(float incomingDMG, bool Fire)
@@ -39,8 +40,9 @@ public class EnemyHealthScript : MonoBehaviour
            RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
             L = 0;
             GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore();
-
-           Destroy(gameObject);
+            //Instantiate(m_Pickup, gameObject.transform, gameObject);
+                Destroy(gameObject);
+            
         }
 
         if (Fire)
@@ -53,13 +55,7 @@ public class EnemyHealthScript : MonoBehaviour
                     Enemy.GetComponent<EnemyHealthScript>().takeDMG(5, true);
 
                 }
-
-
-            }
-
-                
-              
-            
+            } 
         }
     }
     public void fire()
@@ -75,5 +71,11 @@ public class EnemyHealthScript : MonoBehaviour
 
         }
 
-    }                                                                                                       
+    }
+
+
+    private void OnDestroy()
+    {
+        Instantiate(m_Pickup, gameObject.transform);
+    }
 }
