@@ -20,6 +20,8 @@ public class SpawnerScript : MonoBehaviour
     public GameObject m_store;
     public GameObject Enemy;
     public int flow = 0;
+    private int m_EnemyHealth;
+    private int m_EnemyDamage;
 
 
     public void CountTheDead(int Dead)
@@ -56,6 +58,7 @@ public class SpawnerScript : MonoBehaviour
             {
                 var randomSpawnPoints = Spawners[Random.Range(0, Spawners.Length)];
                 Instantiate(Enemy, randomSpawnPoints.position, Quaternion.identity);
+                Enemy.GetComponent<Enemycontroller>().AddDificulty(m_EnemyHealth, m_EnemyDamage);
                 aliveEnemies++;
              
             }           
@@ -108,15 +111,14 @@ public class SpawnerScript : MonoBehaviour
         {
 
             RoundsOfEnemies++;
-            Enemy.GetComponent<Enemycontroller>().AddDificulty(5, 5);
+            m_EnemyDamage += 5;
+            m_EnemyHealth += 5;
+            
         }
         if (currentRound % 2 == 0)
         {
-
             amountOfEnemies *= 1.35f;
             Mathf.FloorToInt(amountOfEnemies);
-           
-
         }
 
         if (currentRound % 4 == 0)

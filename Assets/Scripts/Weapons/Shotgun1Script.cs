@@ -24,7 +24,7 @@ public class Shotgun1Script : ParentWeapon
         if (stat == "FireRate")
         {
             m_FireRate -= amount;
-            Mathf.Clamp(m_FireRate, 0.3f, 1f);
+            Mathf.Clamp(m_FireRate, 0.3f, 1.5f);
         }
         if (stat == "Range")
         {
@@ -37,6 +37,10 @@ public class Shotgun1Script : ParentWeapon
             TakeAway = GetComponentInParent<StatsForWeapons>().FireRate;
             m_FireRate = m_FireRate - TakeAway;
         }
+        if (stat == "Upgrade")
+        {
+            AddFireB = true;
+        }
 
     }
 
@@ -46,9 +50,9 @@ public class Shotgun1Script : ParentWeapon
 
     private void Start()
     {
-        m_FireRate = 0.8f;
+        m_FireRate = 1.5f;
         m_damage = 12;
-        m_projectilespeed = 10;
+        m_projectilespeed = 50;
  ;
         m_stats = GetComponent<StatsForWeapons>();
         

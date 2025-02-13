@@ -10,6 +10,7 @@ public class ARScript : ParentWeapon
 {
     private float TakeAway;
     public Sprite m_sprite2;
+    private float Clamp = 0.08f;
     public override void AddStats(string stat, float amount)
 
     {
@@ -20,7 +21,7 @@ public class ARScript : ParentWeapon
         if (stat == "FireRate")
         {
             m_FireRate -= amount;
-            Mathf.Clamp(m_FireRate, 0.05f, 1f);
+            Mathf.Clamp(m_FireRate, Clamp, 1f);
         }
         if (stat == "Range")
         {
@@ -32,6 +33,12 @@ public class ARScript : ParentWeapon
             m_damage = GetComponentInParent<StatsForWeapons>().Damage + m_damage;
             TakeAway = GetComponentInParent<StatsForWeapons>().FireRate;
             m_FireRate = m_FireRate - TakeAway;
+        }
+        if (stat == "Upgrade")
+        {
+            Clamp = 0.05f;
+            m_FireRate = 0.05f;
+            Mathf.Clamp(m_damage, 1, 150f);
         }
 
     }

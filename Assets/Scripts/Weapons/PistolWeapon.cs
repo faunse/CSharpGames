@@ -12,13 +12,14 @@ public class PistolWeapon : ParentWeapon
 {
     public float TakeAway;
     public Sprite Sprite;
+    private bool Upgraded;
 
 
     private void Start()
     {
         
         m_damage = 5;
-        m_FireRate = 0.6f;
+        m_FireRate = 0.75f;
         m_projectilespeed = 150;
         LightPoint.SetActive(true);
     }
@@ -30,14 +31,6 @@ public class PistolWeapon : ParentWeapon
 
 
     }
-
-
-
-
-
-
-
-
 
     public override void AddStats(string stat, float amount)
     {
@@ -62,8 +55,10 @@ public class PistolWeapon : ParentWeapon
             m_damage = GetComponentInParent<StatsForWeapons>().Damage + m_damage;
             TakeAway = GetComponentInParent<StatsForWeapons>().FireRate;
             m_FireRate = m_FireRate - TakeAway;
-
-
+        }
+        if (stat == "Upgrade")
+        {
+            Upgraded = true;
         }
 
     }

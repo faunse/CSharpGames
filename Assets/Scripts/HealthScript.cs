@@ -17,8 +17,6 @@ public class HealthScript : MonoBehaviour
     void Start()
     {
         m_CurrentHealth = m_MaxHealth;
-       
-        
     }
 
     
@@ -31,9 +29,6 @@ public class HealthScript : MonoBehaviour
             die();
 
         }
-
-
-        
     }
 
     public void hurt(float amount)

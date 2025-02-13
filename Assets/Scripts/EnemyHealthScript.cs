@@ -2,20 +2,25 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class EnemyHealthScript : MonoBehaviour
 {
     
     public float health;
+    public float maxHealth;
     private GameObject RoundHandler;
     private int L = 1;
     public GameObject m_Pickup;
+    public Image m_healthbar;
 
     private bool heartSpawned = false;
 
     private void Start()
     {
         RoundHandler = GameObject.Find("RoundHandler");
+        health = 15;
+        maxHealth = health;
     }
 
 
@@ -28,12 +33,13 @@ public class EnemyHealthScript : MonoBehaviour
     public void AddHealth(int H)
     {
         health = health + H;
+        maxHealth = health;
     }
 
     public void takeDMG(float incomingDMG, bool Fire)
     {
         health = health - incomingDMG;
-        
+        m_healthbar.fillAmount = health / maxHealth;
         if (health <= 0)
         {
             

@@ -205,10 +205,18 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.UpgradeARcost;
         if (Pscore >= Cost)
         {
+            foreach (GameObject weapon in Weapons)
+            {
 
-            Debug.Log("AR");
+                if (weapon.name.Equals("AKFP"))
+                {
+                    weapon.GetComponent<ParentWeapon>().AddStats("Upgrade", 0);
+                    
+
+                }
+            }
             Score(Cost);
-            return;           
+            BuyAR(0);
         }
     }
     public void UpgradeShotgun(int Cost)
@@ -216,9 +224,40 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.UpgradeShotgunCost;
 
         if (Pscore >= Cost)
-        {
-            Score(Cost);
-            GetComponent<Shotgun1Script>().AddFireBullets(12);            
-        }
+            foreach (GameObject weapon in Weapons)
+            {
+
+                if (weapon.name.Equals("SHOTGUNFP"))
+                {
+                    weapon.GetComponent<ParentWeapon>().AddStats("Upgrade", 0);
+
+                }
+           
+            }
+        BuyShotgun(0);
+
+        Score(Cost);
     }
+
+    public void UpgradeRevolver(int Cost)
+    {
+        Cost = (int)Store.UpgradeShotgunCost;
+
+        if (Pscore >= Cost)
+            foreach (GameObject weapon in Weapons)
+            {
+
+                if (weapon.name.Equals("RevolverFP"))
+                {
+                    weapon.GetComponent<ParentWeapon>().AddStats("Upgrade", 0);
+
+                }
+
+            }
+        BuyPistol(0);
+
+        Score(Cost);
+    }
+
+
 }
