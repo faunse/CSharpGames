@@ -1,38 +1,59 @@
+using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
     public float m_Dmg;
     public bool FireT;
-    private void OnBecameInvisible()
+    public bool Explosive;
+    private bool m_Once;
+
+    private void Start()
     {
-        
-  
+        Destroy(gameObject, 1f);
     }
 
-    public void BulletStats(float m_dmg, bool A)
+    public void BulletStats(float m_dmg, bool A, bool B)
     {
         m_Dmg = m_dmg;
         FireT = A;
-        Debug.Log(m_dmg);
-     
-        
+        Explosive = B;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (Explosive)
         {
-            collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg,FireT);
-            
-            
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 4);
+            foreach (Collider2D Enemy in colliders)
+            {
+                GameObject Enemys = Enemy.gameObject;
+                if (Enemys.GetComponent<EnemyHealthScript>() != null)
+                {
+                    Enemys.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg + 50, false);
+                }
+            }
+            if (!collision.gameObject.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
 
         }
-
-        if (!collision.gameObject.CompareTag("Player"))
+        else
         {
-            Destroy(gameObject);
+            if (collision.gameObject.CompareTag("Enemy") && !m_Once)
+            {
+                m_Once = true;
+                collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg, FireT);
+            }
+
+            if (!collision.gameObject.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
+
         }
     }
 }

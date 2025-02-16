@@ -38,7 +38,8 @@ public class ARScript : ParentWeapon
         {
             Clamp = 0.05f;
             m_FireRate = 0.05f;
-            Mathf.Clamp(m_damage, 1, 150f);
+            Mathf.Clamp(m_damage, 5, 50f);
+            m_damage = 5;
         }
 
     }
@@ -64,7 +65,7 @@ public class ARScript : ParentWeapon
             GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
             if (bullet.GetComponent<Rigidbody2D>() != null)
             {
-                bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
+                bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB, Explosive);
                 bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
             }
 

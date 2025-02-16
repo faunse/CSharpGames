@@ -90,7 +90,7 @@ public class Shotgun1Script : ParentWeapon
                     Mathf.Lerp(m_Left.position.z, m_Right.position.z, (float)i / (float)bulletAmount)
                     ) - transform.parent.position;
                 GameObject bullet = Instantiate(m_bullet, m_firepoint.position, Quaternion.identity);
-                bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB);
+                bullet.GetComponent<BulletScript>().BulletStats(m_damage, AddFireB, Explosive);
                 bullet.GetComponent<Rigidbody2D>().AddForce(fireDirection.normalized * m_projectilespeed, ForceMode2D.Impulse);
             }
 

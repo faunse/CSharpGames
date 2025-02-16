@@ -59,6 +59,7 @@ public class PistolWeapon : ParentWeapon
         if (stat == "Upgrade")
         {
             Upgraded = true;
+            Explosive = true;
         }
 
     }
@@ -67,7 +68,7 @@ public class PistolWeapon : ParentWeapon
         {
             if (Active == true)
             {
-                Debug.Log("Shoot");
+               
                 Vector3 PlayerPos = transform.position;
                 Vector3 mousepos = Input.mousePosition;
                 Vector3 mouseposonscreen = Camera.main.ScreenToWorldPoint(mousepos);
@@ -76,7 +77,7 @@ public class PistolWeapon : ParentWeapon
                 StartCoroutine("Flash");
                 if (bullet.GetComponent<Rigidbody2D>() != null)
                 {
-                    m_bullet.GetComponent<BulletScript>().BulletStats(m_damage, false);
+                    m_bullet.GetComponent<BulletScript>().BulletStats(m_damage, false, Explosive);
                     bullet.GetComponent<Rigidbody2D>().AddForce(CrossHair.normalized * m_projectilespeed, ForceMode2D.Impulse);
                 }
 

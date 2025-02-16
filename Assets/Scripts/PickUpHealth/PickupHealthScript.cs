@@ -4,6 +4,7 @@ public class PickupHealthScript : MonoBehaviour
 {
     private void Start()
     {
+        Destroy(gameObject, 10f);
         
     }
 

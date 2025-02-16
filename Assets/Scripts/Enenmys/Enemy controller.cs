@@ -110,7 +110,7 @@ public class Enemycontroller : MonoBehaviour
 
     }
 
- 
+    
 
     void HandleStateAttack()
     {

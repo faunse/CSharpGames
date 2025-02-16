@@ -13,6 +13,7 @@ public class EnemyHealthScript : MonoBehaviour
     private int L = 1;
     public GameObject m_Pickup;
     public Image m_healthbar;
+    private bool m_Once;
 
     private bool heartSpawned = false;
 
@@ -40,48 +41,62 @@ public class EnemyHealthScript : MonoBehaviour
     {
         health = health - incomingDMG;
         m_healthbar.fillAmount = health / maxHealth;
-        if (health <= 0)
+        if (health <= 0 && !m_Once)
         {
-            
-           RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
+            m_Once = true;
+            RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
             L = 0;
-            GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(15);
-            //Instantiate(m_Pickup, gameObject.transform, gameObject);
-                Destroy(gameObject);
+            GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(30);
+            Instantiate(m_Pickup, transform.position, transform.rotation);
+            Destroy(gameObject);
             
         }
-
-        if (Fire)
+        else
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 50);
-            foreach (Collider Enemy in colliders)
+            if (Fire)
             {
-                if (Enemy.GetComponent<EnemyHealthScript>() != null)
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 6);
+                foreach (Collider2D Enemy in colliders)
                 {
-                    Enemy.GetComponent<EnemyHealthScript>().takeDMG(5, true);
-
+                    GameObject Enemys = Enemy.gameObject;
+                    if (Enemys.GetComponent<EnemyHealthScript>() != null)
+                    {
+                        Enemys.GetComponent<EnemyHealthScript>().fire(1);
+                    }
                 }
-            } 
+            }
+
         }
+       
     }
-    public void fire()
+    public void fire(int a)
     {
         StartCoroutine("FireCoroutine");
     }
+
+
     IEnumerator FireCoroutine()
     {
         for (int i = 0; i <= 5; i++)
         {
-            health = health - 20;
-            yield return new WaitForSeconds(2);
+            health = health - 10;
+            m_healthbar.fillAmount = health / maxHealth;
+            if (health <= 0)
+            {
 
+                RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
+                L = 0;
+                GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(30);
+                Instantiate(m_Pickup, transform.position, transform.rotation);
+                Destroy(gameObject);
+
+            }
+            yield return new WaitForSeconds(2);
         }
 
+
     }
 
 
-    private void OnDestroy()
-    {
-        Instantiate(m_Pickup, transform.position, transform.rotation);
-    }
+
 }

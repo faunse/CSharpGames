@@ -19,6 +19,7 @@ public abstract class ParentWeapon : MonoBehaviour
     [SerializeField] protected float m_FireTimeout = 0;
     [SerializeField] public bool AddFireB;
     [SerializeField] public bool Active;
+    [SerializeField] public bool Explosive;
 
     [SerializeField] public ParticleSystem ParticleSystem;
     //[SerializeField] private Vector2 m_lastdirection;
