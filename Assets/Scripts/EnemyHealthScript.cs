@@ -45,7 +45,7 @@ public class EnemyHealthScript : MonoBehaviour
             
            RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
             L = 0;
-            GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore();
+            GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(15);
             //Instantiate(m_Pickup, gameObject.transform, gameObject);
                 Destroy(gameObject);
             
@@ -82,6 +82,6 @@ public class EnemyHealthScript : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(m_Pickup, gameObject.transform);
+        Instantiate(m_Pickup, transform.position, transform.rotation);
     }
 }

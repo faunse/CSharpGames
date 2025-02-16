@@ -9,15 +9,12 @@ public class ScoreSystem : MonoBehaviour
 
     private void Start()
     {
-        if (FinalScore > 0)
-        {
-            ScoreArray = new int[FinalScore];
-        }
+     
     }
-    public void AddScore(int scoretoadd = 15)
+    public void AddScore(int scoretoadd)
     {
-        m_score += scoretoadd;
-        FinalScore += m_score;
+        FinalScore = FinalScore + scoretoadd;
+        m_score = m_score + scoretoadd;
     }
 
     public int GetScore()
