@@ -79,7 +79,7 @@ public class Shotgun1Script : ParentWeapon
             Vector3 mouseposonscreen2 = Camera.main.ScreenToWorldPoint(mousepos2);
             Vector2 CrossHair = mouseposonscreen2 - PlayerPos2;
             //Deals with bullet spread
-            int bulletAmount = 20;
+            int bulletAmount = 6;
             StartCoroutine("Flash");
             for (int i = 0; i < bulletAmount; i++)
             {

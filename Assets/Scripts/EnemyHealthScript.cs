@@ -14,6 +14,8 @@ public class EnemyHealthScript : MonoBehaviour
     public GameObject m_Pickup;
     public Image m_healthbar;
     private bool m_Once;
+    private bool m_OnFire;
+    private float m_Dmg;
 
     private bool heartSpawned = false;
 
@@ -61,7 +63,7 @@ public class EnemyHealthScript : MonoBehaviour
                     GameObject Enemys = Enemy.gameObject;
                     if (Enemys.GetComponent<EnemyHealthScript>() != null)
                     {
-                        Enemys.GetComponent<EnemyHealthScript>().fire(1);
+                        Enemys.GetComponent<EnemyHealthScript>().fire(incomingDMG);
                     }
                 }
             }
@@ -69,32 +71,37 @@ public class EnemyHealthScript : MonoBehaviour
         }
        
     }
-    public void fire(int a)
+    public void fire(float Dmg)
     {
-        StartCoroutine("FireCoroutine");
+        StartCoroutine(FireCoroutine(m_OnFire, Dmg));
+        m_OnFire = true;
     }
 
 
-    IEnumerator FireCoroutine()
+    IEnumerator FireCoroutine(bool fire, float Dmg)
     {
+        gameObject.GetComponent<ParticleSystem>().Play(true);
         for (int i = 0; i <= 5; i++)
         {
-            health = health - 10;
-            m_healthbar.fillAmount = health / maxHealth;
-            if (health <= 0)
+            if (fire)
             {
-
-                RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
-                L = 0;
-                GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(30);
-                Instantiate(m_Pickup, transform.position, transform.rotation);
-                Destroy(gameObject);
-
+                i = 0;
+            }
+            else
+            {
+                health = health - (Dmg/2f);
+                m_healthbar.fillAmount = health / maxHealth;
+                if (health <= 0)
+                {
+                    RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
+                    L = 0;
+                    GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(30);
+                    Instantiate(m_Pickup, transform.position, transform.rotation);
+                    Destroy(gameObject);
+                }
             }
             yield return new WaitForSeconds(2);
         }
-
-
     }
 
 

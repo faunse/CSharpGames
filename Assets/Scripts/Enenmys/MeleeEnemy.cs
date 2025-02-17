@@ -22,10 +22,7 @@ public class MeleeEnemy : Enemycontroller
         Vector3 dir = (m_player.transform.position - this.transform.position).normalized;
         animator.SetFloat("Horizontal", dir.x);
         animator.SetFloat("Vertical", dir.y);
-        animator.SetFloat("Speed", 1);
-       
-
-
+        animator.SetFloat("Speed", M_speed);
     }
 
 
@@ -33,11 +30,9 @@ public class MeleeEnemy : Enemycontroller
 
     public override void Attack()
     {
-        
         animator.SetTrigger("Attacking");
         m_player.GetComponent<HealthScript>().hurt(m_Damage);
-        M_speed = 0;
-
+        
     }
 
     public override void AddDificulty(int D, int H)

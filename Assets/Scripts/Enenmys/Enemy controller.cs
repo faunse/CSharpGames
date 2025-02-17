@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Playables;
 
 public class Enemycontroller : MonoBehaviour
@@ -16,6 +17,7 @@ public class Enemycontroller : MonoBehaviour
     public float m_maxSpeed;
     public float m_Damage;
     protected bool bCanAttack = true;
+    private NavMeshAgent m_nav;
 
     protected float AtkDelay = 2.0f;
     
@@ -28,21 +30,14 @@ public class Enemycontroller : MonoBehaviour
     EnemyStates m_State;    
     Vector2 m_direction;
 
-
-    
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         M_speed = m_maxSpeed;
         m_stoppingDistance = .75f;
-      
         m_player = FindObjectOfType<TopDownCharacterController>().transform;
         m_State = EnemyStates.MoveToPlayer;
-        ChangeState();
-
+        m_nav = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -59,115 +54,59 @@ public class Enemycontroller : MonoBehaviour
             case EnemyStates.Attack:
                 HandleStateAttack();
                 break;
-
-
         }
-
     }
-
-    void ChangeState()
-    {
-        
-
-    }
-
-
-
-
-
+    
     private void FixedUpdate()
-    {
-        
+    {    
     }
-
-
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if  (collision.CompareTag("Player"))
         {
+            //*m_PlayerInSight = true;
             m_State = EnemyStates.Attack;
-            m_PlayerInSight = true;
-            ChangeState();
-
-
         }
-        
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            m_PlayerInSight = false;
-
-
+            //*m_PlayerInSight = false;
+            m_State = EnemyStates.MoveToPlayer;
         }
-
-
     }
-
-    
-
     void HandleStateAttack()
     {
         if(bCanAttack)
         {
             Attack();
-            
+            M_speed = 0;
+            m_nav.isStopped = true;
             bCanAttack = false;
             StartCoroutine(AttackDelay());
         }
-        
     }
-
     void HandleStateWalkToPlayer()
     {
+        m_nav.isStopped = false;
         M_speed = m_maxSpeed;
-        if (Vector2.Distance(transform.position, m_player.position) > m_stoppingDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, m_player.position, M_speed * Time.deltaTime);
-
-        }
+        m_nav.SetDestination(m_player.position);
     }
-   
-    
-
-
-
 
     public virtual void Attack()
     {
-
-
     }
 
     public virtual void AddDificulty(int DMGplus, int Health)
     {
-
     }
 
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(AtkDelay);
-        
-
-        if (m_PlayerInSight == true)
-        {
-            HandleStateAttack();
-            bCanAttack = true;
-
-        }
-        else
-        {
-            m_State = EnemyStates.MoveToPlayer;
-            ChangeState();
-            bCanAttack = true;
-        }
-        
+        bCanAttack = true;
     }
 
 }
