@@ -1,15 +1,26 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ScoreSystem : MonoBehaviour
 {
     public int m_score;
     public static int FinalScore;
     public static int[] ScoreArray;
+    private InputAction m_Money;
 
     private void Start()
     {
-     
+        m_Money = InputSystem.actions.FindAction("Money");
+
+    }
+
+    private void Update()
+    {
+        if (m_Money.IsPressed())
+        {
+            AddScore(1000);
+        }
     }
     public void AddScore(int scoretoadd)
     {

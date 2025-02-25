@@ -17,6 +17,7 @@ public class TopDownCharacterController : MonoBehaviour
     //The inputs that we need to retrieve from the input system.
     private InputAction m_moveAction;
     private InputAction m_attackAction;
+    private InputAction m_Money;
 
     //The components that we need to edit to make the player move smoothly.
     private Animator m_animator;
@@ -57,6 +58,7 @@ public class TopDownCharacterController : MonoBehaviour
         //bind movement inputs to variables
         m_moveAction = InputSystem.actions.FindAction("Move");
         m_attackAction = InputSystem.actions.FindAction("Attack");
+        m_Money = InputSystem.actions.FindAction("Money");
 
         //get components from Character game object so that we can use them later.
         m_animator = GetComponent<Animator>();
@@ -117,6 +119,8 @@ public class TopDownCharacterController : MonoBehaviour
             
 
         }
+
+
 
     }
 

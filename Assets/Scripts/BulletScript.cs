@@ -43,6 +43,10 @@ public class BulletScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Enemy"))
+            {
+                Destroy(gameObject);
+            }
 
         }
 
@@ -53,9 +57,15 @@ public class BulletScript : MonoBehaviour
                 m_Once = true;
                 collision.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg, FireT);
             }
+            if (!collision.gameObject.CompareTag("Player") || !collision.gameObject.CompareTag("Enemy"))
+            {
+                Destroy(gameObject);
+            }
 
         }
     }
+
+
 
     private void OnDestroy()
     {
