@@ -20,7 +20,7 @@ public class PistolWeapon : ParentWeapon
         
         m_damage = 5;
         m_FireRate = 0.75f;
-        m_projectilespeed = 150;
+        m_projectilespeed = 90;
         LightPoint.SetActive(true);
     }
 

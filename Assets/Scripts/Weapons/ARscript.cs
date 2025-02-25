@@ -60,7 +60,7 @@ public class ARScript : ParentWeapon
     {
         m_damage = 15;
         m_FireRate = 0.35f;
-        m_projectilespeed = 150;
+        m_projectilespeed = 90;
        
     }
 
