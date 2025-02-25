@@ -4,9 +4,9 @@ public class MeleeEnemy : Enemycontroller
 {
     public Animator animator;
 
-    private float m_Horizontal;
-    private float m_Vertical;
-    public new GameObject m_player;
+    private float me_Horizontal;
+    private float me_Vertical;
+    public GameObject m_player;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class MeleeEnemy : Enemycontroller
     public override void AddDificulty(int D, int H)
     {
         m_Damage += D;
-        gameObject.GetComponent<EnemyHealthScript>().AddHealth(H);
+        gameObject.GetComponent<EnemyHealthScript>().AddHealth(H*2);
         
     }
 }

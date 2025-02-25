@@ -1,15 +1,11 @@
 using System.Collections;
-using System.Xml.Serialization;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Playables;
 
 public class Enemycontroller : MonoBehaviour
 {
 
-    protected Transform m_player;
+    protected Transform mc_player;
     protected float M_speed;
     protected float m_stoppingDistance;
     protected bool m_PlayerInSight;
@@ -35,7 +31,7 @@ public class Enemycontroller : MonoBehaviour
     {
         M_speed = m_maxSpeed;
         m_stoppingDistance = .75f;
-        m_player = FindObjectOfType<TopDownCharacterController>().transform;
+        mc_player = FindObjectOfType<TopDownCharacterController>().transform;
         m_State = EnemyStates.MoveToPlayer;
         m_nav = GetComponent<NavMeshAgent>();
     }
@@ -92,7 +88,7 @@ public class Enemycontroller : MonoBehaviour
     {
         m_nav.isStopped = false;
         M_speed = m_maxSpeed;
-        m_nav.SetDestination(m_player.position);
+        m_nav.SetDestination(mc_player.position);
     }
 
     public virtual void Attack()

@@ -16,6 +16,10 @@ public class EnemyHealthScript : MonoBehaviour
     private bool m_Once;
     private bool m_OnFire;
     private float m_Dmg;
+    private bool m_RNG
+    {
+        get { return (Random.value > 0.5f); }
+    }
 
     private bool heartSpawned = false;
 
@@ -49,7 +53,10 @@ public class EnemyHealthScript : MonoBehaviour
             RoundHandler.GetComponent<SpawnerScript>().CountTheDead(L);
             L = 0;
             GameObject.Find("Character").GetComponent<ScoreSystem>().AddScore(50);
-            Instantiate(m_Pickup, transform.position, transform.rotation);
+            if (m_RNG)
+            {
+                Instantiate(m_Pickup, transform.position, transform.rotation);
+            }
             Destroy(gameObject);
             
         }
