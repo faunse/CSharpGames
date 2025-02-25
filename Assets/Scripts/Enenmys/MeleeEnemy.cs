@@ -18,6 +18,7 @@ public class MeleeEnemy : Enemycontroller
 
     protected override void Update()
     {
+        // mainly animation stuff
         base.Update();
         Vector3 dir = (m_player.transform.position - this.transform.position).normalized;
         animator.SetFloat("Horizontal", dir.x);

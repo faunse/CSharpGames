@@ -17,7 +17,7 @@ public class StorePrices : MonoBehaviour
     public float UpgradeARcost = 2500;
     public float UpgradeShotgunCost = 1500;
     public float UpgradePistolCost = 5000;
-
+    // This script keeps track of all the store prices and ups them whenever an item is bought
     private void Start()
     {
         m_scoreSystem = GameObject.Find("Character").GetComponent<ScoreSystem>();      

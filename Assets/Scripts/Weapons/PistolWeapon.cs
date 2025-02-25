@@ -43,6 +43,7 @@ public class PistolWeapon : ParentWeapon
         if (stat == "FireRate")
         {
             m_FireRate -= amount;
+            m_FireRate = Mathf.Clamp(m_FireRate, 0.3f, 1f);
             Mathf.Clamp(m_FireRate, 0.1f, 1f);
         }
         if (stat == "Range")

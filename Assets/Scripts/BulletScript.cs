@@ -35,6 +35,7 @@ public class BulletScript : MonoBehaviour
                 GameObject Enemys = Enemy.gameObject;
                 if (Enemys.GetComponent<EnemyHealthScript>() != null)
                 {
+                    
                     Enemys.GetComponent<EnemyHealthScript>().takeDMG(m_Dmg + 50, false);
                 }
             }

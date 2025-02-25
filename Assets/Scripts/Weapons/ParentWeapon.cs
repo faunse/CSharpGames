@@ -50,10 +50,10 @@ public abstract class ParentWeapon : MonoBehaviour
 
     protected abstract void Fire();
 
-
+    // Light fucntion activates weapons light
     public abstract void Light(bool F);
 
-
+    // this allows the current weapon to fire rather then an inactive weapon
     public void SetActiveWeapon(bool Activate)
     {
         Active = Activate;

@@ -55,7 +55,7 @@ public class StatsForWeapons : MonoBehaviour
         Cost = (int)Store.FireRateCost;
         if (Pscore >= Cost)
         {     
-            FireRate = FireRate + 0.05f;
+            FireRate = FireRate + 0.025f;
             foreach (GameObject weapon in Weapons)
             {
                 weapon.GetComponent<ParentWeapon>().AddStats("FireRate", FireRate);
@@ -96,11 +96,9 @@ public class StatsForWeapons : MonoBehaviour
         Debug.Log(Cost);
         if (Pscore >= Cost)
         {
-            Health = Health + 10;
+            Health = Health + 2.5f;
             gameObject.GetComponentInParent<HealthScript>().m_MaxHealth = Health;
-            gameObject.GetComponentInParent<HealthScript>().m_CurrentHealth += 10;
-            Debug.Log("Health Updated");
-            
+            gameObject.GetComponentInParent<HealthScript>().m_CurrentHealth += 2;
             Score(Cost);
         }
 

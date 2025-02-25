@@ -23,8 +23,10 @@ public class Shotgun1Script : ParentWeapon
         }
         if (stat == "FireRate")
         {
-            m_FireRate -= amount;
             Mathf.Clamp(m_FireRate, 0.3f, 1.5f);
+            m_FireRate -= amount;
+            m_FireRate = Mathf.Clamp(m_FireRate, 0.6f, 1.5f);
+            Debug.Log(m_FireRate);
         }
         if (stat == "Range")
         {

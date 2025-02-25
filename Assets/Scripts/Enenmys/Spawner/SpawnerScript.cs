@@ -22,14 +22,15 @@ public class SpawnerScript : MonoBehaviour
     public int flow = 0;
     private int m_EnemyHealth;
     private int m_EnemyDamage;
+    public GameObject TimerOBJ;
 
-
+    // counts how many enemies are dead 
     public void CountTheDead(int Dead)
     {
         DeadEnemies = Dead + DeadEnemies;
         CheckRoundStatus();
     }
-
+    // then checks if all enemies are dead
     public void CheckRoundStatus()
     {
         
@@ -51,6 +52,7 @@ public class SpawnerScript : MonoBehaviour
         flow = 1;
         Finished = false;
 
+        // Spawns amount of waves of enemies at random spawn locations
         for (float a = 0f; RoundsOfEnemies > a; a++) 
         {
             Debug.Log(a);
@@ -73,8 +75,9 @@ public class SpawnerScript : MonoBehaviour
     {
 
         IsShopAccesible = true;
+        TimerOBJ.SetActive(true);
         PreStart();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         StartCoroutine("StartRound");
 
     }
@@ -87,7 +90,8 @@ public class SpawnerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == false)
+        // checks if shop can be accessed
+        if (m_OpenShop.WasPressedThisFrame() && IsShopAccesible == true)
         {
 
             if (m_store.active == true)
@@ -106,6 +110,7 @@ public class SpawnerScript : MonoBehaviour
 
     private void PreStart()
     {
+        // upadtes enemy stats to make them stronger over time also increases waves of enemies
         currentRound++;
         if (currentRound % 3 == 0)
         {

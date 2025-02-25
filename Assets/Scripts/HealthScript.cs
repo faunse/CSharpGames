@@ -52,5 +52,6 @@ public class HealthScript : MonoBehaviour
     public void AddHealth(int health)
     {
         m_CurrentHealth += health;
+        m_CurrentHealth = Mathf.Clamp(m_CurrentHealth, 0, m_MaxHealth);
     }
 }
